@@ -152,7 +152,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Pickup Place</h4>
@@ -171,8 +171,26 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Drop Place</h4>
+                                    <div class="form-group mb-4">
+                                        <select class="custom-select mr-sm-2" id="pick_point" name="pick_point">
+                                            <option value="Somnath">Somnath Railway Station</option>
+                                            <option value="Vyara">Vyara Railway Station</option>
+                                            <option value="Rajkot">Rajkot Railway Station </option>
+                                            <option value="Rajkot">Rajkot Airport</option>
+                                            <option value="Ahmedabad">Ahmedabad Railway Station</option>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                                            <option value="Ahmedabad">Ahmedabad Airport</option>
+                                        </select>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Room Option</h4>
@@ -180,7 +198,8 @@ if (isset($_POST['submit'])) {
                                         <select class="custom-select mr-sm-2" id="pick_point" name="pick_point">
 
 
-                                            <option value="Option">Option</option>
+                                            <option value="Dormitory 100/day (Rs.)">Dormitory 100/day (Rs.)</option>
+                                            <option value="Shared Room 700/day (Rs.)">Shared Room 700/day (Rs.)</option>
                                         </select>
                                     </div>
 
@@ -188,7 +207,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Food option</h4>
@@ -341,7 +360,7 @@ if (isset($_POST['submit'])) {
                                         <label class="custom-control-label" for="customRadio10">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio102" value="Tea without sugar" name="feb10" class="custom-control-input">
+                                        <input type="radio" id="customRadio102" value="Tea without sugar" name="feb10" class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio102">Not Going</label>
                                     </div>
 
@@ -357,7 +376,7 @@ if (isset($_POST['submit'])) {
                                         <label class="custom-control-label" for="customRadio11">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio112" value="Tea without sugar" name="feb11" class="custom-control-input">
+                                        <input type="radio" id="customRadio112" value="Tea without sugar" name="feb11" class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio112">Not Going</label>
                                     </div>
 
@@ -373,7 +392,7 @@ if (isset($_POST['submit'])) {
                                         <label class="custom-control-label" for="customRadio13">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio132" value="Tea without sugar" name="feb13" class="custom-control-input">
+                                        <input type="radio" id="customRadio132" value="Tea without sugar" name="feb13" class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio132">Not Going</label>
                                     </div>
 
@@ -389,7 +408,7 @@ if (isset($_POST['submit'])) {
                                         <label class="custom-control-label" for="customRadio14">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio142" value="Tea without sugar" name="feb14" class="custom-control-input">
+                                        <input type="radio" id="customRadio142" value="Tea without sugar" name="feb14" class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio142">Not Going</label>
                                     </div>
 

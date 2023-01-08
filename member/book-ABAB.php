@@ -496,7 +496,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Attend Event</h4>
@@ -514,7 +514,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Pickup Place</h4>
@@ -533,9 +533,27 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Drop Place</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="pick_point" name="pick_point">
+                                                <option value="Somnath">Somnath Railway Station</option>
+                                                <option value="Vyara">Vyara Railway Station</option>
+                                                <option value="Rajkot">Rajkot Railway Station </option>
+                                                <option value="Rajkot">Rajkot Airport</option>
+                                                <option value="Ahmedabad">Ahmedabad Railway Station</option>
 
+                                                <option value="Ahmedabad">Ahmedabad Airport</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
                         
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Food option</h4>
@@ -691,7 +709,7 @@ if (isset($_POST['submit'])) {
                                             <label class="custom-control-label" for="customRadio13">Going</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio132" value="Tea without sugar" name="feb13" class="custom-control-input">
+                                            <input type="radio" id="customRadio132" value="Tea without sugar" name="feb13" class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadio132">Not Going</label>
                                         </div>
 
@@ -707,7 +725,7 @@ if (isset($_POST['submit'])) {
                                             <label class="custom-control-label" for="customRadio14">Going</label>
                                         </div>
                                         <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio142" value="Tea without sugar" name="feb14" class="custom-control-input">
+                                            <input type="radio" id="customRadio142" value="Tea without sugar" name="feb14" class="custom-control-input" checked>
                                             <label class="custom-control-label" for="customRadio142">Not Going</label>
                                         </div>
 
