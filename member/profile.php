@@ -19,7 +19,7 @@ if (isset($_POST['update'])) {
     $rc = $stmt->bind_param('sssssss', $fullname, $gender, $address, $email, $dob,$district, $aid);
     $stmt->execute();
     echo "<script>alert('Profile updated Succssfully');</script>";
-    echo "<script>location.href='book-ABAB';</script>";
+    echo "<script>location.href='book-ABAB.php';</script>";
 }
 ?>
 
