@@ -7,7 +7,7 @@ if(strlen($_SESSION['id'])==0)
 		$uri  = rtrim(dirname($_SERVER['PHP_SELF']), '/\\');
 		$extra="index.php";		
 		$_SESSION["id"]="";
-		header("Location: https://$host$uri/$extra");
+		echo "<script>location.href='https://$host$uri/$extra';</script>";
 	}
 }
 ?>

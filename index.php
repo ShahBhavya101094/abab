@@ -26,7 +26,8 @@ if (isset($_POST['login'])) {
         $log = "insert into userLog(userId,userEmail,userIp,city,country) values('$uid','$uemail','$ip','$city','$country')";
         $mysqli->query($log);
         if ($log) {
-            header("location:member/profile.php");
+
+            echo "<script>location.href='member/profile.php';</script>";
         }
     } else {
         echo "<script>alert('Sorry, Invalid Username/Email or Password!');</script>";
