@@ -1,4 +1,5 @@
 <?php
+//Test Git
 function check_login()
 {
 if(strlen($_SESSION['id'])==0)
