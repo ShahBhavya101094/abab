@@ -178,14 +178,17 @@ check_login();
                                         <tr>
                                             <th scope="col">#</th>
                                             <!-- <th scope="col">User ID</th> -->
-                                            <th scope="col">Member's Email</th>
-                                            <th scope="col">Last Activity</th>
+                                            <th scope="col">Member's Name</th>
+                                            <th scope="col">Pick Point</th>
+                                            <th scope="col">Arrival Date/Time</th>
+                                            <th scope="col">Departure Point</th>
+                                            <th scope="col">Guest Count</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $aid = $_SESSION['id'];
-                                        $ret = "SELECT * from userlog ORDER BY loginTime DESC";
+                                        $ret = "SELECT * from abab_booking ORDER BY uid DESC";
                                         $stmt = $mysqli->prepare($ret);
                                         $stmt->execute();
                                         $res = $stmt->get_result();
@@ -195,8 +198,11 @@ check_login();
                                             <tr>
                                                 <td><?php echo $cnt;; ?></td>
                                                 <!-- <td><?php echo $row->userId; ?></td> -->
-                                                <td><?php echo $row->userEmail; ?></td>
-                                                <td><?php echo $row->loginTime; ?></td>
+                                                <td><?php echo $row->uid; ?></td>
+                                                <td><?php echo $row->pick_point; ?></td>
+                                                <td><?php echo $row->From_Date; ?></td>
+                                                <td><?php echo $row->To_Date; ?></td>
+                                                <td><?php echo $row->total_member; ?></td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;

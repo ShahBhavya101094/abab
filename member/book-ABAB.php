@@ -729,7 +729,7 @@ if (isset($_POST['submit'])) {
                             <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Total Member</h4>
+                                        <h4 class="card-title">Guest Count</h4>
                                         <div class="form-group">
                                             <input type="text" name="total_member" id="total_member" placeholder="Total Member here.." required class="form-control">
                                         </div>
