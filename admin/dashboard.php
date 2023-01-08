@@ -1,8 +1,8 @@
 <?php
-    session_start();
-    include('../includes/dbconn.php');
-    include('../includes/check-login.php');
-    check_login();
+session_start();
+include('../includes/dbconn.php');
+include('../includes/check-login.php');
+check_login();
 
 ?>
 
@@ -25,7 +25,7 @@
     <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
-    
+
 </head>
 
 <body>
@@ -41,13 +41,12 @@
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
-        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
         <header class="topbar" data-navbarbg="skin6">
-            <?php include 'includes/navigation.php'?>
+            <?php include 'includes/navigation.php' ?>
         </header>
         <!-- ============================================================== -->
         <!-- End Topbar header -->
@@ -58,7 +57,7 @@
         <aside class="left-sidebar" data-sidebarbg="skin6">
             <!-- Sidebar scroll-->
             <div class="scroll-sidebar" data-sidebarbg="skin6">
-                <?php include 'includes/sidebar.php'?>
+                <?php include 'includes/sidebar.php' ?>
             </div>
             <!-- End Sidebar scroll-->
         </aside>
@@ -75,14 +74,14 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                       <?php include 'includes/greetings-a.php'?>
+                        <?php include 'includes/greetings-a.php' ?>
                         <div class="d-flex align-items-center">
                             <!-- <nav aria-label="breadcrumb">
                                 
                             </nav> -->
                         </div>
                     </div>
-                    
+
                 </div>
             </div>
             <!-- ============================================================== -->
@@ -98,60 +97,68 @@
                 <div class="card-group">
                     <div class="card border-right">
                         <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/member-count.php'?></h2>
-                                
+                            <a href="./view-members-acc.php">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/member-count.php' ?></h2>
+
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Members</h6>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Registered Members</h6>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
+                                    </div>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="card border-right">
                         <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><?php include 'counters/room-count.php'?></h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Rooms
-                                    </h6>
+                            <a href="./manage-members.php">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="text-dark mb-1 w-100 text-truncate font-weight-medium"><?php include 'counters/booked-count.php' ?></h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">ABAB Registered
+                                        </h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="grid"></i></span>
+                                    </div>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="grid"></i></span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="card border-right">
                         <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <div class="d-inline-flex align-items-center">
-                                        <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/booked-count.php'?></h2>
+                            <a href="./manage-members.php">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <div class="d-inline-flex align-items-center">
+                                            <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/guest-count.php' ?></h2>
+                                        </div>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Guest</h6>
                                     </div>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Booked Rooms</h6>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="book-open"></i></span>
+                                    </div>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="book-open"></i></span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                     <div class="card">
                         <div class="card-body">
-                            <div class="d-flex d-lg-flex d-md-block align-items-center">
-                                <div>
-                                    <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/course-count.php'?></h2>
-                                    <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Featured Courses</h6>
+                            <a href="./manage-vyavastha.php">
+                                <div class="d-flex d-lg-flex d-md-block align-items-center">
+                                    <div>
+                                        <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/vyavastha-count.php' ?></h2>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Vyavasta Member</h6>
+                                    </div>
+                                    <div class="ml-auto mt-md-3 mt-lg-0">
+                                        <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
+                                    </div>
                                 </div>
-                                <div class="ml-auto mt-md-3 mt-lg-0">
-                                    <span class="opacity-7 text-muted"><i data-feather="globe"></i></span>
-                                </div>
-                            </div>
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -161,12 +168,12 @@
 
 
                 <div class="col-12">
-                        <div class="card">
-                            
-                            <div class="card-body">
-                            
+                    <div class="card">
+
+                        <div class="card-body">
+
                             <div class="table-responsive">
-                            <table id="zero_config" class="table table-striped table-bordered no-wrap">
+                                <table id="zero_config" class="table table-striped table-bordered no-wrap">
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
@@ -176,35 +183,36 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                    <?php	
-                                        $aid=$_SESSION['id'];
-                                        $ret="SELECT * from userlog ORDER BY loginTime DESC";
-                                        $stmt= $mysqli->prepare($ret) ;
-                                        $stmt->execute() ;
-                                        $res=$stmt->get_result();
-                                        $cnt=1;
-                                        while($row=$res->fetch_object()) {
-                                                ?>
-                                        <tr><td><?php echo $cnt;;?></td>
-                                        <!-- <td><?php echo $row->userId;?></td> -->
-                                        <td><?php echo $row->userEmail;?></td>
-                                        <td><?php echo $row->loginTime;?></td>
+                                        <?php
+                                        $aid = $_SESSION['id'];
+                                        $ret = "SELECT * from userlog ORDER BY loginTime DESC";
+                                        $stmt = $mysqli->prepare($ret);
+                                        $stmt->execute();
+                                        $res = $stmt->get_result();
+                                        $cnt = 1;
+                                        while ($row = $res->fetch_object()) {
+                                        ?>
+                                            <tr>
+                                                <td><?php echo $cnt;; ?></td>
+                                                <!-- <td><?php echo $row->userId; ?></td> -->
+                                                <td><?php echo $row->userEmail; ?></td>
+                                                <td><?php echo $row->loginTime; ?></td>
                                             </tr>
-                                            <?php
-                                        $cnt=$cnt+1;
-                                            } ?>
-											
-										
-									</tbody>
+                                        <?php
+                                            $cnt = $cnt + 1;
+                                        } ?>
+
+
+                                    </tbody>
                                 </table>
                             </div>
-                            
-                            </div>
-                        
+
                         </div>
+
                     </div>
-                
-               
+                </div>
+
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
