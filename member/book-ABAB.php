@@ -301,7 +301,7 @@ if (isset($_POST['submit'])) {
                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">Transport Details</h4>
+                                            <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6></h4>
                                             <div class="form-group">
                                                 <input type="text" name="trans_details" id="trans_details" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                             </div>
@@ -357,7 +357,7 @@ if (isset($_POST['submit'])) {
                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">Transport Details</h4>
+                                            <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6></h4>
                                             <div class="form-group">
                                                 <input type="text" name="trans_details" id="trans_details" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                             </div>
@@ -496,7 +496,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Attend Event</h4>
@@ -514,7 +514,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Pickup Place</h4>
@@ -534,23 +534,8 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Room Option</h4>
-                                        <div class="form-group mb-4">
-                                            <select class="custom-select mr-sm-2" id="pick_point" name="pick_point">
-
-
-                                                <option value="Option">Option</option>
-                                            </select>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                        
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Food option</h4>
@@ -629,7 +614,7 @@ if (isset($_POST['submit'])) {
                             <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Transport Details</h4>
+                                        <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6></h4>
                                         <div class="form-group">
                                             <input type="text" name="trans_details" id="trans_details" class="form-control" value="">
                                         </div>
@@ -684,7 +669,7 @@ if (isset($_POST['submit'])) {
                             <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Transport Details</h4>
+                                        <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6></h4>
                                         <div class="form-group">
                                             <input type="text" name="trans_details" id="trans_details" class="form-control" value="">
                                         </div>
