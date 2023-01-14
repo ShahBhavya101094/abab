@@ -198,7 +198,7 @@ if (isset($_POST['update'])) {
 
                     <div class="row">
 
-                        <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Full Name</h4>
@@ -211,7 +211,7 @@ if (isset($_POST['update'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Address Details</h4>
@@ -251,7 +251,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">District</h4>
@@ -268,7 +268,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Email Address</h4>
@@ -282,7 +282,7 @@ if (isset($_POST['update'])) {
 
                         <!-- By Vkendra - Vkendra.com -->
 
-                        <div class="col-sm-12 col-md-6 col-lg-6">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Contact Number</h4>

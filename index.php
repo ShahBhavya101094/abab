@@ -5,10 +5,10 @@ if (isset($_POST['login'])) {
     $mobile = $_POST['mobile'];
     $password = $_POST['password'];
     $password = md5($password);
-    $stmt = $mysqli->prepare("SELECT email,password,id FROM user_reg WHERE mobile=? and password=? ");
+    $stmt = $mysqli->prepare("SELECT email,password,id,reg_status FROM user_reg WHERE mobile=? and password=? ");
     $stmt->bind_param('ss', $mobile, $password);
     $stmt->execute();
-    $stmt->bind_result($mobile, $password, $id);
+    $stmt->bind_result($mobile, $password, $id,$reg_status);
     $rs = $stmt->fetch();
     $stmt->close();
     $_SESSION['id'] = $id;
@@ -25,8 +25,12 @@ if (isset($_POST['login'])) {
         $country = $addrDetailsArr['geoplugin_countryName'];
         $log = "insert into userLog(userId,userEmail,userIp,city,country) values('$uid','$uemail','$ip','$city','$country')";
         $mysqli->query($log);
-        if ($log) {
 
+        if ($reg_status == "1") {
+
+            echo "<script>location.href='member/index.php';</script>";
+        }
+        else{
             echo "<script>location.href='member/profile.php';</script>";
         }
     } else {

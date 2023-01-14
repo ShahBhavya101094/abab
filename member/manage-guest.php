@@ -6,7 +6,7 @@ check_login();
 
 if (isset($_GET['del'])) {
     $id = intval($_GET['del']);
-    $adn = "DELETE from guest_details where id=?";
+    $adn = "DELETE from abab_guest_booking where id=?";
     $stmt = $mysqli->prepare($adn);
     $stmt->bind_param('i', $id);
     $stmt->execute();
@@ -118,15 +118,18 @@ if (isset($_GET['del'])) {
                                                 <th>Relation</th>
                                                 <th>Contact Number</th>
                                                 <th>Address</th>
-                                                <th>City</th>
-                                                <th>Postal Code</th>
+                                                <th>१०/२ -  सोमनाथ</th>
+                                                <th>११/२ - पोरबंदर</th>
+                                                <th>१२/२ - प्रभाष क्षेत्र</th>
+                                                <th>१३/२ - सासण और गिरनार</th>
+                                                <th>१४/२ - द्वारिका</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
                                             <?php
                                             $aid = $_SESSION['id'];
-                                            $ret = "SELECT * from guest_details where uid = ?";
+                                            $ret = "SELECT * from abab_guest_booking where uid = ?";
                                             $stmt = $mysqli->prepare($ret);
                                             $stmt->bind_param('i', $aid);
                                             $stmt->execute(); //ok
@@ -140,8 +143,13 @@ if (isset($_GET['del'])) {
                                                     <td><?php echo $row->guest_relation; ?></td>
                                                     <td><?php echo $row->guest_contact; ?></td>
                                                     <td><?php echo $row->guest_address; ?></td>
-                                                    <td><?php echo $row->guest_city; ?></td>
-                                                    <td><?php echo $row->guest_pin; ?></td>
+                                                    
+                                                    <td><?php echo $row->feb10; ?></td>
+                                                    <td><?php echo $row->feb11; ?></td>
+                                                    <td><?php echo $row->feb12; ?></td>
+                                                    <td><?php echo $row->feb13; ?></td>
+                                                    
+                                                    <td><?php echo $row->feb14; ?></td>
                                                     <td><a href="edit-guest.php?id=<?php echo $row->id; ?>" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
                                                         <a href="manage-guest.php?del=<?php echo $row->id; ?>" title="Delete" onclick="return confirm(" Do you want to delete");"><i class="icon-close" style="color:red;"></i></a>
                                                     </td>

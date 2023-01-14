@@ -1,1 +1,1 @@
-<?php echo "<script>location.href='profile.php';</script>"; ?>
+<?php echo "<script>location.href='dashboard.php';</script>"; ?>

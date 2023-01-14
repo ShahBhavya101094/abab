@@ -5,15 +5,36 @@ include('../includes/check-login.php');
 check_login();
 
 if (isset($_POST['submit'])) {
-    $seater = $_POST['seater'];
-    $fees = $_POST['fees'];
-    $id = $_GET['id'];
+    $uid = $_SESSION['id'];
+    $guest_name = $_POST['guest_name'];
+    $guest_relation = $_POST['guest_relation'];
+    $guest_contact = $_POST['guest_contact'];
+    $guest_address = $_POST['guest_address'];
+    $pick_point_place = $_POST['pick_point_place'];
+    $pick_point_place = $_POST['pick_point_place'];
+    $drop_point_place = $_POST['drop_point_place'];
+    $food_status = $_POST['food_status'];
+    $arrival_date = $_POST['arrival_date'];
+    $arrival_time = $_POST['arrival_time'];
+    $arrival_mode_transport = $_POST['arrival_mode_transport'];
+    $arrival_mode_details = $_POST['arrival_mode_details'];
+    $departure_date = $_POST['departure_date'];
+    $departure_time = $_POST['departure_time'];
+    $departure_mode_transport = $_POST['departure_mode_transport'];
+    $departure_mode_details = $_POST['departure_mode_details'];
+    $feb10 = $_POST['feb10'];
+    $feb11 = $_POST['feb11'];
+    $feb12 = $_POST['feb12'];
+    $feb13 = $_POST['feb13'];
+    $feb14 = $_POST['feb14'];
+    $status = $_POST['room_option'];
     $query = "UPDATE rooms set seater=?,fees=? where id=?";
+    $query = "UPDATE abab_guest_booking SET guest_name=?,guest_relation=?,guest_contact=?,guest_address=?,pick_point_place=?,drop_point_place=?,food_status=?,arrival_date=?,arrival_time=?,arrival_mode_transport=?,arrival_mode_details=?,departure_date=?,departure_time=?,departure_mode_transport=?,departure_mode_details=?,feb10=?,feb11=?,feb12=?,feb13=?,feb14=?,status=? where uid=?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('iii', $seater, $fees, $id);
+    $rc = $stmt->bind_param('sssssssssssssssssssssi', $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $total_member_sis, $total_member_bro, $status, $uid);
     $stmt->execute();
     echo "<script>alert('Room details has been updated');
-        window.location.href='manage-rooms.php';
+        window.location.href='manage-guest.php';
         </script>";
 }
 
@@ -112,7 +133,7 @@ if (isset($_POST['submit'])) {
 
                     <?php
                     $id = $_GET['id'];
-                    $ret = "SELECT * from guest_details where id=?";
+                    $ret = "SELECT * from abab_guest_booking where id=?";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->bind_param('i', $id);
                     $stmt->execute(); //ok
@@ -123,82 +144,351 @@ if (isset($_POST['submit'])) {
 
                         <div class="row">
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Guest Name</h4>
                                         <div class="form-group">
-                                            <input type="text" name="guest_name" id="guest_name" value="<?php echo $row->guest_name;?>" class="form-control" placeholder="Enter Guest's Name" required>
+                                            <input type="text" name="guest_name" id="guest_name" placeholder="Guest Name here.." class="form-control" value="<?php echo $row->guest_name; ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
 
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Relation</h4>
+                                        <h4 class="card-title">Guest Relation</h4>
                                         <div class="form-group">
-                                            <input type="text" name="guest_relation" id="guest_relation" value="<?php echo $row->guest_relation;?>" required class="form-control" placeholder="Member's Relation with Guest">
+                                            <input type="text" name="guest_relation" id="guest_relation" placeholder="Guest Relation here.." class="form-control" value="<?php echo $row->guest_relation; ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Contact Number</h4>
                                         <div class="form-group">
-                                            <input type="text" name="guest_contact" id="guest_contact" value="<?php echo $row->guest_contact;?>" required class="form-control" placeholder="Enter Guest's Contact No.">
+                                            <input type="text" name="guest_contact" id="guest_contact" placeholder="Guest Contact here.." class="form-control" value="<?php echo $row->guest_contact; ?>">
                                         </div>
                                     </div>
                                 </div>
                             </div>
-
-                        </div>
-
-                        <div class="row">
-
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Address</h4>
                                         <div class="form-group">
-                                            <textarea name="guest_address" id="guest_address" class="form-control" placeholder="Enter Address" required><?php echo $row->guest_address;?></textarea>
+                                            <textarea name="guest_address" id="guest_address" class="form-control" placeholder="Enter Address" required><?php echo $row->guest_address; ?></textarea>
                                         </div>
                                     </div>
                                 </div>
                             </div>
 
-
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">City</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="guest_city" id="guest_city" value="<?php echo $row->guest_city;?>" class="form-control" placeholder="Enter City Name" required>
+                                        <h4 class="card-title">Room Option</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="room_option" name="pick_point">
+
+                                                <option selected value="<?php echo $row->status; ?>"><?php echo $row->status; ?></option>
+
+                                                <option value="Dormitory 100/day (Rs.)">Dormitory 100/day (Rs.)</option>
+                                                <option value="Shared Room 700/day (Rs.)">Double Sharing 350/day (Rs.)</option>
+                                            </select>
                                         </div>
+
                                     </div>
                                 </div>
                             </div>
 
-
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">Postal Code</h4>
-                                        <div class="form-group">
-                                            <input type="text" name="guest_pin" id="guest_pin" value="<?php echo $row->guest_pin;?>" class="form-control" placeholder="Enter Postal Code" required>
+                                        <h4 class="card-title">Pickup Place</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
+                                                <option selected value="<?php echo $row->pick_point_place; ?>"><?php echo $row->pick_point_place; ?></option>
+                                                <option value="Vyara Railway Station">Vyara Railway Station</option>
+                                                <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
+                                                <option value="Rajkot Airport">Rajkot Airport</option>
+                                                <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
+                                                <option value="Ahmedabad Airport">Ahmedabad Airport</option>
+                                                <option value="Other">Other</option>
+                                            </select>
                                         </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Drop Place</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
+                                                <option selected value="<?php echo $row->drop_point_place; ?>"><?php echo $row->drop_point_place; ?></option>
+                                                <option value="Vyara Railway Station">Vyara Railway Station</option>
+                                                <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
+                                                <option value="Rajkot Airport">Rajkot Airport</option>
+                                                <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
+                                                <option value="Ahmedabad Airport">Ahmedabad Airport</option>
+
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Food option</h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio1" value="Tea with sugar" <?php echo $row->food_status == "Tea with sugar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio1">Tea with sugar</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio2" value="Tea without sugar" <?php echo $row->food_status == "Tea without sugar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio2">Tea without sugar</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio3" value="Coffee" <?php echo $row->food_status == "Coffee" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio3">Coffee</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio4" value="Milk" <?php echo $row->food_status == "Milk" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio4">Milk</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio5" value="Falahar" <?php echo $row->food_status == "Falahar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio5">Falahar</label>
+                                        </div>
+
+
+                                    </div>
+                                </div>
+                            </div>
+                            <!-- By Vkendra - Vkendra.com -->
+
+
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Arrival Date</h4>
+                                        <div class="form-group">
+                                            <input type="date" min="2023-02-01" min="2023-02-01" name="arrival_date" id="arrival_date" class="form-control" value="<?php echo $row->arrival_date; ?>" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Arrival Time</h4>
+                                        <div class="form-group">
+                                            <input type="time" min="07:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->arrival_time; ?>" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mode of Transport</h4>
+                                        <div class="form-group">
+                                            <select class="custom-select mr-sm-2" id="arrival_mode_transport" name="arrival_mode_transport">
+                                                <option selected value="<?php echo $row->arrival_mode_transport; ?>"><?php echo $row->arrival_mode_transport; ?></option>
+                                                <option value="By Road">By Road</option>
+                                                <option value="By Flight">By Flight</option>
+                                                <option value="By Train">By Train</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6>
+                                        </h4>
+                                        <div class="form-group">
+                                            <input type="text" name="arrival_mode_details" id="arrival_mode_details" class="form-control" value="<?php echo $row->arrival_mode_details; ?>">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Departure Date</h4>
+                                        <div class="form-group">
+                                            <input type="date" min="2023-02-01" min="2023-02-01" name="departure_date" id="departure_date" class="form-control" value="<?php echo $row->departure_date; ?>" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Departure Time</h4>
+                                        <div class="form-group">
+                                            <input type="time" min="07:00" max="22:00" name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->departure_time; ?>" required>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mode of Transport</h4>
+                                        <div class="form-group">
+                                            <select class="custom-select mr-sm-2" id="departure_mode_transport" name="departure_mode_transport">
+                                                <option selected value="<?php echo $row->departure_mode_transport; ?>"><?php echo $row->departure_mode_transport; ?></option>
+                                                <option value="By Road">By Road</option>
+                                                <option value="By Flight">By Flight</option>
+                                                <option value="By Train">By Train</option>
+                                                <option value="Other">Other</option>
+                                            </select>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6>
+                                        </h4>
+                                        <div class="form-group">
+                                            <input type="text" name="departure_mode_details" id="departure_mode_details" class="form-control" value="<?php echo $row->departure_mode_details; ?>">
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="row">
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">१०/२ - सोमनाथ (Somnath) <h6>( Free )</h6>
+                                        </h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio10" value="Going" <?php echo $row->feb10 == "Going" ? "checked" : ""; ?> name="feb10" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio10">Going</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio102" value="Not Going" <?php echo $row->feb10 == "Not Going" ? "checked" : ""; ?> name="feb10" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio102">Not Going</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">११/२ - पोरबंदर (Porbandar) <h6>( Rs. 500/- )</h6>
+                                        </h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio11" value="Going" <?php echo $row->feb11 == "Going" ? "checked" : ""; ?> name="feb11" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio11">Going</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio112" value="Not Going" <?php echo $row->feb11 == "Not Going" ? "checked" : ""; ?> name="feb11" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio112">Not Going</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">१२/२ - प्रभाष क्षेत्र (Near by Place) <h6>( Rs. 300/- )</h6>
+                                        </h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio12" value="Going" <?php echo $row->feb12 == "Going" ? "checked" : ""; ?> name="feb12" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio12">Going</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio122" value="Not Going" <?php echo $row->feb12 == "Not Going" ? "checked" : ""; ?> name="feb12" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio122">Not Going</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope way + Lion Safari charges included )</h6>
+                                        </h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio13" value="Going" <?php echo $row->feb13 == "Going" ? "checked" : ""; ?> name="feb13" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio13">Going</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio132" value="Not Going" <?php echo $row->feb13 == "Not Going" ? "checked" : ""; ?> name="feb13" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio132">Not Going</label>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-3">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h4 class="card-title">१४/२ - द्वारिका (Dwarika) <h6>( Rs. 800/- )</h6>
+                                        </h4>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio14" value="Going" <?php echo $row->feb14 == "Going" ? "checked" : ""; ?> name="feb14" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio14">Going</label>
+                                        </div>
+                                        <div class="custom-control custom-radio">
+                                            <input type="radio" id="customRadio142" value="Not Going" <?php echo $row->feb14 == "Not Going" ? "checked" : ""; ?> name="feb14" class="custom-control-input">
+                                            <label class="custom-control-label" for="customRadio142">Not Going</label>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
 
 
                         </div>
+
+
+
+
 
 
 
