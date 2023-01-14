@@ -11,18 +11,13 @@
                         <a href="profile.php">
                             <b class="logo-icon">
                                 <!-- Dark Logo icon -->
-                                <img src="../assets/images/logo-icon-nav.png" alt="homepage" class="dark-logo" />
+                                <img src="https://www.vrmvk.org/sites/default/files/inline-images/vrmvk-logo.png" width="75" height="60" alt="homepage" class="dark-logo" />
                                 <!-- Light Logo icon -->
-                                <img src="../assets/images/logo-icon-nav.png" alt="homepage" class="light-logo" />
+                                <img src="https://www.vrmvk.org/sites/default/files/inline-images/vrmvk-logo.png" width="75" height="60" alt="homepage" class="light-logo" />
                             </b>
                             <!--End Logo icon -->
                             <!-- Logo text -->
-                            <span class="logo-text">
-                                <!-- dark Logo text -->
-                                <img src="../assets/images/logo-icon-nav.png" alt="homepage" class="dark-logo" />
-                                <!-- Light Logo text -->
-                                <img src="../assets/images/logo-icon-nav.png" class="light-logo" alt="homepage" />
-                            </span>
+                          
                         </a>
                     </div>
                     <!-- ============================================================== -->
