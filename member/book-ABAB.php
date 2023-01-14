@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
         $stmt = $mysqli->prepare($query);
         $rc = $stmt->bind_param('ii',   $status, $uid);
         $stmt->execute();
-        echo "<script>alert('ABAB Details has Been Registered!');</script>";        
+        echo "<script>alert('ABAB Details has Been Registered!');</script>";
         echo "<script>location.href='manage-guest.php';</script>";
     } else {
         $query = "UPDATE abab_booking set attend_event=?,pick_point_place=?,drop_point_place=?,food_status=?,arrival_date=?,arrival_time=?,arrival_mode_transport=?,arrival_mode_details=?,departure_date=?,departure_time=?,departure_mode_transport=?,departure_mode_details=?,feb13=?,feb14=?,total_member_sis=?,total_member_bro=?,status=? where uid=?";
@@ -39,7 +39,7 @@ if (isset($_POST['submit'])) {
         $rc = $stmt->bind_param('sssssssssssssssssi',  $attend_event, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb13, $feb14, $total_member_sis, $total_member_bro, $status, $uid);
         $stmt->execute();
         echo "<script>alert('ABAB Details has Been updated Succssfully');</script>";
-        
+
         echo "<script>location.href='manage-guest.php';</script>";
     }
 }
@@ -182,7 +182,7 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Attend Event</h4>
                                             <div class="form-group mb-4">
-                                                <select class="custom-select mr-sm-2" id="attend_event" name="attend_event">
+                                                <select class="custom-select mr-sm-2" id="attend_evente" name="attend_event">
                                                     <option selected value="<?php echo $row->attend_event; ?>"><?php echo $row->attend_event; ?></option>
 
                                                     <option value="Yes">Yes</option>
@@ -487,7 +487,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <h4 class="card-title">Attend Event</h4>
                                         <div class="form-group mb-4">
-                                            <select class="custom-select mr-sm-2" id="attend_event" name="attend_event">
+                                            <select class="custom-select mr-sm-2" id="attend_eventa" name="attend_event">
                                                 <option selected>Choose...</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="May Be">May Be</option>
@@ -849,6 +849,17 @@ if (isset($_POST['submit'])) {
 
 
         })
+
+        $("#attend_eventa").change(function() {
+            if (this.value == "No"){
+                $ans = confirm("Are you sure ?");
+                if($ans == true){
+                    location.href='not_attend.php';
+                }
+            }
+
+        });
+       
     });
 </script>
 
