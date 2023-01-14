@@ -185,8 +185,7 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">Pickup Place</h4>
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="pick_point" name="pick_point">
-                                            <option value="Somnath">Somnath Railway Station</option>
-                                            <option value="Vyara">Vyara Railway Station</option>
+                                            <option value="Vyara">Veraval Railway Station</option>
                                             <option value="Rajkot">Rajkot Railway Station </option>
                                             <option value="Rajkot">Rajkot Airport</option>
                                             <option value="Ahmedabad">Ahmedabad Railway Station</option>

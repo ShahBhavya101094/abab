@@ -215,7 +215,7 @@ if (isset($_POST['submit'])) {
                                         <div class="form-group mb-4">
                                             <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
                                                 <option selected value="<?php echo $row->pick_point_place; ?>"><?php echo $row->pick_point_place; ?></option>
-                                                <option value="Vyara Railway Station">Vyara Railway Station</option>
+                                                <option value="Veraval Railway Station">Veraval Railway Station</option>
                                                 <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                                 <option value="Rajkot Airport">Rajkot Airport</option>
                                                 <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
@@ -234,7 +234,7 @@ if (isset($_POST['submit'])) {
                                         <div class="form-group mb-4">
                                             <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
                                                 <option selected value="<?php echo $row->drop_point_place; ?>"><?php echo $row->drop_point_place; ?></option>
-                                                <option value="Vyara Railway Station">Vyara Railway Station</option>
+                                                <option value="Veraval Railway Station">Veraval Railway Station</option>
                                                 <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                                 <option value="Rajkot Airport">Rajkot Airport</option>
                                                 <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
