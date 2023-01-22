@@ -131,17 +131,7 @@ if (isset($_POST['update'])) {
 
                         <!-- By Vkendra - Vkendra.com -->
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Category Name</h4>
-                                    <div class="form-group">
-                                        <input type="text" class="form-control" value="<?php echo $row->category; ?>" required readonly>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                      
 
                         <div class="col-md-4">
                             <div class="card">
@@ -155,17 +145,6 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Letter</h4>
-                                    <div class="form-group">
-                                        <input type="text" value="<?php echo $row->letter; ?>" class="form-control" required readonly>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
 
                         <div class="col-md-4">
                             <div class="card">
@@ -179,17 +158,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Role Name</h4>
-                                    <div class="form-group">
-                                        <input type="text" value="<?php echo $row->role; ?>" class="form-control" required readonly>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
+                        
 
                 </div>
 

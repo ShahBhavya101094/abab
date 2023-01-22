@@ -31,7 +31,7 @@ if (isset($_POST['submit'])) {
     $status = $_POST['room_option'];
     $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('isssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11,$feb12, $feb13, $feb14, $status);
+    $rc = $stmt->bind_param('isssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status);
     $stmt->execute();
     echo "<script>alert('Guest details has been added');</script>";
     echo "<script>location.href='manage-guest.php';</script>";
@@ -136,7 +136,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Guest Name</h4>
@@ -148,18 +148,29 @@ if (isset($_POST['submit'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Guest Relation</h4>
+                                    <h4 class="card-title"> Relation with Guest</h4>
                                     <div class="form-group">
-                                        <input type="text" name="guest_relation" id="guest_relation" placeholder="Guest Relation here.." class="form-control">
+                                        <select class="custom-select mr-sm-2" id="guest_relation" name="guest_relation">
+
+
+                                            <option value="Spouse">Spouse</option>
+                                            <option value="Parents">Parents</option>
+
+                                            <option value="Child">Child</option>
+                                            <option value="Sibling">Sibling</option>
+
+                                            <option value="Family">Family</option>
+                                            <option value="Friend">Friend</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Contact Number</h4>
@@ -169,20 +180,21 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Address</h4>
                                     <div class="form-group">
-                                        
-                                            <textarea name="guest_address" id="guest_address" class="form-control" placeholder="Enter Address" required></textarea></div>
+
+                                        <textarea name="guest_address" id="guest_address" class="form-control" placeholder="Enter Address" required></textarea>
+                                    </div>
                                 </div>
                             </div>
                         </div>
 
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Room Option</h4>
@@ -200,28 +212,71 @@ if (isset($_POST['submit'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Pickup Place</h4>
+                                    <h4 class="card-title">Food Option-1 </h4>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio1" value="Tea"  name="food_status" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio1">Tea</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio3" value="Coffee"  name="food_status" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio3">Coffee</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio4" value="Milk"  name="food_status" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio4">Milk</label>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Food Option-2</h4>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio21" value="Normal" name="food_status2" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio21">Normal</label>
+                                    </div>
+                                    <div class="custom-control custom-radio">
+                                        <input type="radio" id="customRadio22" value="Without Sugar"  name="food_status2" class="custom-control-input">
+                                        <label class="custom-control-label" for="customRadio22">Without Sugar</label>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Arrival Place</h4>
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
-                                            <option value="Veraval Railway Station">Veraval Railway Station</option>
+                                           <option value="Veraval Railway Station">Veraval Railway Station</option>
                                             <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                             <option value="Rajkot Airport">Rajkot Airport</option>
                                             <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
                                             <option value="Ahmedabad Airport">Ahmedabad Airport</option>
-                                            <option value="Other">Other</option>
+
                                         </select>
                                     </div>
 
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">Drop Place</h4>
+                                    <h4 class="card-title">Departure Place</h4>
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
                                             <option value="Veraval Railway Station">Veraval Railway Station</option>
@@ -229,8 +284,6 @@ if (isset($_POST['submit'])) {
                                             <option value="Rajkot Airport">Rajkot Airport</option>
                                             <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
                                             <option value="Ahmedabad Airport">Ahmedabad Airport</option>
-
-                                            <option value="Other">Other</option>
                                         </select>
                                     </div>
 
@@ -238,35 +291,6 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Food option</h4>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" value="Tea with sugar" name="food_status" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio1">Tea with sugar</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio2" value="Tea without sugar" name="food_status" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio2">Tea without sugar</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio3" value="Coffee" name="food_status" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio3">Coffee</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio4" value="Milk" name="food_status" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio4">Milk</label>
-                                    </div>
-                                    <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio5" value="Falahar" name="food_status" class="custom-control-input">
-                                        <label class="custom-control-label" for="customRadio5">Falahar</label>
-                                    </div>
-
-
-                                </div>
-                            </div>
-                        </div>
                         <!-- By Vkendra - Vkendra.com -->
 
 
@@ -290,7 +314,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="07:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" required>
+                                        <input type="time" min="06:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" required>
                                     </div>
 
                                 </div>
@@ -306,7 +330,7 @@ if (isset($_POST['submit'])) {
                                             <option value="By Road">By Road</option>
                                             <option value="By Flight">By Flight</option>
                                             <option value="By Train">By Train</option>
-                                            <option value="Other">Other</option>
+                                            <option value="Self">Self</option>
                                         </select>
                                     </div>
 
@@ -346,7 +370,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="07:00" max="22:00" name="departure_time" id="departure_time" class="form-control" required>
+                                        <input type="time" min="06:00" max="22:00" name="departure_time" id="departure_time" class="form-control" required>
                                     </div>
 
                                 </div>

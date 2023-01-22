@@ -40,7 +40,8 @@ check_login();
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -95,16 +96,24 @@ check_login();
                 <!-- Start First Cards -->
                 <!-- *************************************************************** -->
                 <div class="card-group">
+                    <div class="card-header">
+                        <h1>सुस्वागतम, Welcome Respected <?php echo $_SESSION['username']; ?> ji,</h1>
+                    </div>
+                </div><br/>
+                <div class="card-group">
                     <div class="card border-right  m-1">
+
                         <div class="card-body">
                             <a href="./manage-guest.php">
                                 <div class="d-flex d-lg-flex d-md-block align-items-center">
                                     <div>
                                         <div class="d-inline-flex align-items-center">
-                                            <h2 class="text-dark mb-1 font-weight-medium"><?php include 'counters/course-count.php' ?></h2>
+                                            <h2 class="text-dark mb-1 font-weight-medium">
+                                                <?php include 'counters/course-count.php' ?></h2>
 
                                         </div>
-                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Guest</h6>
+                                        <h6 class="text-muted font-weight-normal mb-0 w-100 text-truncate">Total Guest
+                                        </h6>
                                     </div>
                                     <div class="ml-auto mt-md-3 mt-lg-0">
                                         <span class="opacity-7 text-muted"><i data-feather="user-plus"></i></span>
@@ -114,7 +123,7 @@ check_login();
                         </div>
                     </div>
                     <!-- By Vkendra - Vkendra.com -->
-                    <div class="card border-right m-1">
+                    <!-- <div class="card border-right m-1">
                         <div class="card-body">
                             <a href="./room-details.php">
                                 <div class="d-flex d-lg-flex d-md-block align-items-center">
@@ -129,7 +138,7 @@ check_login();
                                 </div>
                             </a>
                         </div>
-                    </div>
+                    </div> -->
 
                 </div>
 
@@ -149,74 +158,56 @@ check_login();
                         while ($row = $res->fetch_object()) {
                         ?>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Prant Name</h4>
-                                        <div class="form-group">
-                                            <input type="text" value="<?php echo $row->pranat; ?>" class="form-control" required readonly>
-                                        </div>
-
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Prant Name</h4>
+                                    <div class="form-group">
+                                        <input type="text" value="<?php echo $row->pranat; ?>" class="form-control"
+                                            required readonly>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- By Vkendra - Vkendra.com -->
+                        <!-- By Vkendra - Vkendra.com -->
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Category Name</h4>
-                                        <div class="form-group">
-                                            <input type="text" class="form-control" value="<?php echo $row->category; ?>" required readonly>
-                                        </div>
 
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Vibhag Name</h4>
+                                    <div class="form-group">
+                                        <input type="text" value="<?php echo $row->vibhag; ?>" class="form-control"
+                                            required readonly>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
 
-                            <div class="col-md-4">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Vibhag Name</h4>
-                                        <div class="form-group">
-                                            <input type="text" value="<?php echo $row->vibhag; ?>" class="form-control" required readonly>
-                                        </div>
 
+
+                        <div class="col-md-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Dayitwa Name</h4>
+                                    <div class="form-group">
+                                        <input type="text" value="<?php echo $row->dayitwa; ?>" class="form-control"
+                                            required readonly>
                                     </div>
+
                                 </div>
                             </div>
+                        </div>
 
-
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Dayitwa Name</h4>
-                                        <div class="form-group">
-                                            <input type="text" value="<?php echo $row->dayitwa; ?>" class="form-control" required readonly>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="col-md-6">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Role Name</h4>
-                                        <div class="form-group">
-                                            <input type="text" value="<?php echo $row->role; ?>" class="form-control" required readonly>
-                                        </div>
-
-                                    </div>
-                                </div>
-                            </div>
 
                     </div>
 
 
-                <?php } ?>
+                    <?php } ?>
 
 
                 </div>

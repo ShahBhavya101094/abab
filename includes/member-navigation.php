@@ -69,6 +69,7 @@
                                         
                                         while($row=$res->fetch_object())
                                         {
+                                            $_SESSION['username'] = $row->fullname;
                                             ?>	
 
                                 <span class="ml-2 d-none d-lg-inline-block"><span>Hello,</span> <span
