@@ -19,13 +19,13 @@
         aria-expanded="false"><i class="fas fa-bed"></i><span
         class="hide-menu">My Guest Details</span></a></li>
 
-        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="room-details.php"
+        <!-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="room-details.php"
         aria-expanded="false"><i class="fas fa-bed"></i><span
-        class="hide-menu">My Room Details</span></a></li>
+        class="hide-menu">My Room Details</span></a></li> -->
 
         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="log-activity.php"
         aria-expanded="false"><i class="fas fa-cogs"></i><span
-        class="hide-menu">Log Activities</span></a></li>
+        class="hide-menu">Log Activities</span></a></li> 
                            
     </ul>
 </nav>

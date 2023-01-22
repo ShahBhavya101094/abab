@@ -146,7 +146,7 @@ if (isset($_POST['submit'])) {
 
 
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Guest Name</h4>
@@ -158,7 +158,7 @@ if (isset($_POST['submit'])) {
                             </div>
 
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Guest Relation</h4>
@@ -169,7 +169,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Contact Number</h4>
@@ -179,7 +179,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Address</h4>
@@ -190,7 +190,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card">
                                     <div class="card-body">
                                         <h4 class="card-title">Room Option</h4>
@@ -208,75 +208,87 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Pickup Place</h4>
-                                        <div class="form-group mb-4">
-                                            <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
-                                                <option selected value="<?php echo $row->pick_point_place; ?>"><?php echo $row->pick_point_place; ?></option>
-                                                <option value="Veraval Railway Station">Veraval Railway Station</option>
-                                                <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
-                                                <option value="Rajkot Airport">Rajkot Airport</option>
-                                                <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
-                                                <option value="Ahmedabad Airport">Ahmedabad Airport</option>
-                                                <option value="Other">Other</option>
-                                            </select>
-                                        </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Food Option-1 </h4>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio1" value="Tea" <?php echo strpos($row->food_status, "Tea") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio1">Tea</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio3" value="Coffee" <?php echo strpos($row->food_status, "Coffee") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio3">Coffee</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio4" value="Milk" <?php echo strpos($row->food_status, "Milk") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio4">Milk</label>
+                                            </div>
 
+
+
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Drop Place</h4>
-                                        <div class="form-group mb-4">
-                                            <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
-                                                <option selected value="<?php echo $row->drop_point_place; ?>"><?php echo $row->drop_point_place; ?></option>
-                                                <option value="Veraval Railway Station">Veraval Railway Station</option>
-                                                <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
-                                                <option value="Rajkot Airport">Rajkot Airport</option>
-                                                <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
-                                                <option value="Ahmedabad Airport">Ahmedabad Airport</option>
 
-                                                <option value="Other">Other</option>
-                                            </select>
+
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Food Option-2</h4>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio21" value="Normal" <?php echo strpos($row->food_status, "Normal") > 0 ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio21">Normal</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" id="customRadio22" value="Without Sugar" <?php echo strpos($row->food_status, "Without Sugar") > 0 ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
+                                                <label class="custom-control-label" for="customRadio22">Without Sugar</label>
+                                            </div>
+
+
+
                                         </div>
-
                                     </div>
                                 </div>
-                            </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
-                                    <div class="card-body">
-                                        <h4 class="card-title">Food option</h4>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio1" value="Tea with sugar" <?php echo $row->food_status == "Tea with sugar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio1">Tea with sugar</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio2" value="Tea without sugar" <?php echo $row->food_status == "Tea without sugar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio2">Tea without sugar</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio3" value="Coffee" <?php echo $row->food_status == "Coffee" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio3">Coffee</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio4" value="Milk" <?php echo $row->food_status == "Milk" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio4">Milk</label>
-                                        </div>
-                                        <div class="custom-control custom-radio">
-                                            <input type="radio" id="customRadio5" value="Falahar" <?php echo $row->food_status == "Falahar" ? "checked" : ""; ?> name="food_status" class="custom-control-input">
-                                            <label class="custom-control-label" for="customRadio5">Falahar</label>
-                                        </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Arrival Place</h4>
+                                            <div class="form-group mb-4">
+                                                <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
+                                                    <option selected value="<?php echo $row->pick_point_place; ?>"><?php echo $row->pick_point_place; ?></option>
+                                                    <option value="Veraval Railway Station">Veraval Railway Station</option>
+                                                    <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
+                                                    <option value="Rajkot Airport">Rajkot Airport</option>
+                                                    <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
+                                                    <option value="Ahmedabad Airport">Ahmedabad Airport</option>
 
+                                                </select>
+                                            </div>
 
+                                        </div>
                                     </div>
                                 </div>
-                            </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Departure Place</h4>
+                                            <div class="form-group mb-4">
+                                                <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
+                                                    <option selected value="<?php echo $row->drop_point_place; ?>"><?php echo $row->drop_point_place; ?></option>
+                                                    <option value="Veraval Railway Station">Veraval Railway Station</option>
+                                                    <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
+                                                    <option value="Rajkot Airport">Rajkot Airport</option>
+                                                    <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
+                                                    <option value="Ahmedabad Airport">Ahmedabad Airport</option>
+                                                </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+
                             <!-- By Vkendra - Vkendra.com -->
 
 
