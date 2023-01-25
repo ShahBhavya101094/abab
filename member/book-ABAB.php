@@ -23,10 +23,11 @@ if (isset($_POST['submit'])) {
     $total_member_sis = $_POST['total_member_sis'];
     $total_member_bro = $_POST['total_member_bro'];
     $status = $_POST['reg_status'];
+    $adhar_number = $_POST['adhar_number'];
     if ($status == "1") {
-        $query = "INSERT INTO `abab_booking` ( `uid`, `attend_event`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb13`, `feb14`, `total_member_sis`, `total_member_bro`, `status`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+        $query = "INSERT INTO `abab_booking` ( `uid`, `attend_event`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb13`, `feb14`, `total_member_sis`, `total_member_bro`, `status`,`adhar_number`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($query);
-        $rc = $stmt->bind_param('isssssssssssssssss', $uid, $attend_event, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb13, $feb14, $total_member_sis, $total_member_bro, $status);
+        $rc = $stmt->bind_param('issssssssssssssssss', $uid, $attend_event, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb13, $feb14, $total_member_sis, $total_member_bro, $status,$adhar_number);
         $stmt->execute();
         $query = "UPDATE user_reg set reg_status=? where id=?";
         $stmt = $mysqli->prepare($query);
@@ -35,9 +36,9 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('ABAB Details has Been Registered!');</script>";
         echo "<script>location.href='manage-guest.php';</script>";
     } else {
-        $query = "UPDATE abab_booking set attend_event=?,pick_point_place=?,drop_point_place=?,food_status=?,arrival_date=?,arrival_time=?,arrival_mode_transport=?,arrival_mode_details=?,departure_date=?,departure_time=?,departure_mode_transport=?,departure_mode_details=?,feb13=?,feb14=?,total_member_sis=?,total_member_bro=?,status=? where uid=?";
+        $query = "UPDATE abab_booking set attend_event=?,pick_point_place=?,drop_point_place=?,food_status=?,arrival_date=?,arrival_time=?,arrival_mode_transport=?,arrival_mode_details=?,departure_date=?,departure_time=?,departure_mode_transport=?,departure_mode_details=?,feb13=?,feb14=?,total_member_sis=?,total_member_bro=?,status=?,adhar_number=? where uid=?";
         $stmt = $mysqli->prepare($query);
-        $rc = $stmt->bind_param('sssssssssssssssssi',  $attend_event, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb13, $feb14, $total_member_sis, $total_member_bro, $status, $uid);
+        $rc = $stmt->bind_param('ssssssssssssssssssi',  $attend_event, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb13, $feb14, $total_member_sis, $total_member_bro, $status, $adhar_number, $uid);
         $stmt->execute();
         echo "<script>alert('ABAB Details has Been updated Succssfully');</script>";
 
@@ -89,6 +90,15 @@ if (isset($_POST['submit'])) {
             });
         }
     </script>
+    <style>
+    .required .card-title:after {
+        color: #d00;
+        content: "*";
+        position: absolute;
+        margin-left: 3px;
+        top: 7px;
+    }
+    </style>
     <!-- By Vkendra - Vkendra.com -->
 </head>
 
@@ -132,6 +142,12 @@ if (isset($_POST['submit'])) {
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
+        <div class="alert alert-primary alert-dismissible bg-warning text-white border-0 fade show" role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                Please keep Aadhar card with you during your visit to Somnath ABAB
+            </div>
 
             <!-- ============================================================== -->
             <!-- Container fluid  -->
@@ -155,6 +171,7 @@ if (isset($_POST['submit'])) {
                 </div>
 
                 <div class="container-fluid">
+
                     <?php
                     $aid = $_SESSION['id'];
                     $ret = "select * from abab_booking where uid=?";
@@ -179,12 +196,13 @@ if (isset($_POST['submit'])) {
 
 
                                 <div class="col-sm-12 col-md-6 col-lg-4">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Are you attending ABAB</h4>
                                             <div class="form-group mb-4">
-                                                <select class="custom-select mr-sm-2" id="attend_evente" name="attend_event">
-                                                    <option selected value="<?php echo $row->attend_event; ?>"><?php echo $row->attend_event; ?></option>
+                                                <select class="custom-select mr-sm-2" id="attend_evente" name="attend_event" required>
+                                                    <option selected value="<?php echo $row->attend_event; ?>">
+                                                        <?php echo $row->attend_event; ?></option>
 
                                                     <option value="Yes">Yes</option>
                                                     <option value="May Be">May Be</option>
@@ -198,7 +216,7 @@ if (isset($_POST['submit'])) {
 
 
                                 <div class="col-sm-12 col-md-6 col-lg-4">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Food Option-1 </h4>
                                             <div class="custom-control custom-radio">
@@ -222,7 +240,7 @@ if (isset($_POST['submit'])) {
 
 
                                 <div class="col-sm-12 col-md-6 col-lg-4">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Food Option-2</h4>
                                             <div class="custom-control custom-radio">
@@ -240,13 +258,26 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
 
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <div class="card">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card required">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Adhar Card :</h4>
+                                            <div class="form-group mb-4">
+                                                <input type="text" class="form-control" id="adhar_number" title="Enter Valid 12 Digit Adhar Card Number" value="<?php echo $row->adhar_number; ?>" name="adhar_number" pattern="[0-9]{12}" require maxlength="12"  placeholder="Enter Adhar Card..." />
+                                                   
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Arrival Place</h4>
                                             <div class="form-group mb-4">
                                                 <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
-                                                    <option selected value="<?php echo $row->pick_point_place; ?>"><?php echo $row->pick_point_place; ?></option>
+                                                    <option selected value="<?php echo $row->pick_point_place; ?>">
+                                                        <?php echo $row->pick_point_place; ?></option>
                                                     <option value="Veraval Railway Station">Veraval Railway Station</option>
                                                     <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                                     <option value="Rajkot Airport">Rajkot Airport</option>
@@ -259,13 +290,14 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-6">
-                                    <div class="card">
+                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Departure Place</h4>
                                             <div class="form-group mb-4">
                                                 <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
-                                                    <option selected value="<?php echo $row->drop_point_place; ?>"><?php echo $row->drop_point_place; ?></option>
+                                                    <option selected value="<?php echo $row->drop_point_place; ?>">
+                                                        <?php echo $row->drop_point_place; ?></option>
                                                     <option value="Veraval Railway Station">Veraval Railway Station</option>
                                                     <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                                     <option value="Rajkot Airport">Rajkot Airport</option>
@@ -285,7 +317,7 @@ if (isset($_POST['submit'])) {
                             <div class="row">
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Arrival Date</h4>
                                             <div class="form-group">
@@ -297,11 +329,11 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Arrival Time</h4>
                                             <div class="form-group">
-                                                <input type="time"  name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->arrival_time; ?>" required>
+                                                <input type="time" name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->arrival_time; ?>" required>
                                             </div>
 
                                         </div>
@@ -309,12 +341,13 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Mode of Transport</h4>
                                             <div class="form-group">
                                                 <select class="custom-select mr-sm-2" id="arrival_mode_transport" name="arrival_mode_transport">
-                                                    <option selected value="<?php echo $row->arrival_mode_transport; ?>"><?php echo $row->arrival_mode_transport; ?></option>
+                                                    <option selected value="<?php echo $row->arrival_mode_transport; ?>">
+                                                        <?php echo $row->arrival_mode_transport; ?></option>
                                                     <option value="By Road">By Road</option>
                                                     <option value="By Flight">By Flight</option>
                                                     <option value="By Train">By Train</option>
@@ -327,7 +360,7 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card ">
                                         <div class="card-body">
                                             <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6>
                                             </h4>
@@ -342,7 +375,7 @@ if (isset($_POST['submit'])) {
                             <div class="row">
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Departure Date</h4>
                                             <div class="form-group">
@@ -354,11 +387,11 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Departure Time</h4>
                                             <div class="form-group">
-                                                <input type="time"  name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->departure_time; ?>" required>
+                                                <input type="time" name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->departure_time; ?>" required>
                                             </div>
 
                                         </div>
@@ -366,12 +399,13 @@ if (isset($_POST['submit'])) {
                                 </div>
 
                                 <div class="col-sm-12 col-md-6 col-lg-3">
-                                    <div class="card">
+                                    <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Mode of Transport</h4>
                                             <div class="form-group">
                                                 <select class="custom-select mr-sm-2" id="departure_mode_transport" name="departure_mode_transport">
-                                                    <option selected value="<?php echo $row->departure_mode_transport; ?>"><?php echo $row->departure_mode_transport; ?></option>
+                                                    <option selected value="<?php echo $row->departure_mode_transport; ?>">
+                                                        <?php echo $row->departure_mode_transport; ?></option>
                                                     <option value="By Road">By Road</option>
                                                     <option value="By Flight">By Flight</option>
                                                     <option value="By Train">By Train</option>
@@ -403,7 +437,8 @@ if (isset($_POST['submit'])) {
                                 <div class="col-sm-12 col-md-6 col-lg-3">
                                     <div class="card">
                                         <div class="card-body">
-                                            <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope way + Lion Safari charges included )</h6>
+                                            <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope
+                                                    way + Lion Safari charges included )</h6>
                                             </h4>
                                             <div class="custom-control custom-radio">
                                                 <input type="radio" id="customRadio13" value="Going" <?php echo $row->feb13 == "Going" ? "checked" : ""; ?> name="feb13" class="custom-control-input">
@@ -484,9 +519,9 @@ if (isset($_POST['submit'])) {
                     <form method="POST">
 
 
-
-
+                        
                         <div class="col-7 align-self-center">
+
                             <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">ABAB Bookings</h4>
                         </div>
 
@@ -497,7 +532,7 @@ if (isset($_POST['submit'])) {
 
 
                             <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Are you attending ABAB</h4>
                                         <div class="form-group mb-4">
@@ -516,7 +551,7 @@ if (isset($_POST['submit'])) {
 
 
                             <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Food Option-1 </h4>
                                         <div class="custom-control custom-radio">
@@ -539,7 +574,7 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-4">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Food Option-2</h4>
                                         <div class="custom-control custom-radio">
@@ -556,9 +591,20 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                    <div class="card required">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Adhar Card :</h4>
+                                            <div class="form-group mb-4">
+                                                <input type="text" class="form-control" id="adhar_number" title="Enter Valid 12 Digit Adhar Card Number" name="adhar_number" pattern="[0-9]{12}" require maxlength="12"  placeholder="Enter Adhar Card..." />
+                                                   
+                                            </div>
 
-                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                <div class="card">
+                                        </div>
+                                    </div>
+                                </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Arrival Place</h4>
                                         <div class="form-group mb-4">
@@ -574,8 +620,8 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-6">
-                                <div class="card">
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Departure Place</h4>
                                         <div class="form-group mb-4">
@@ -598,7 +644,7 @@ if (isset($_POST['submit'])) {
                         <div class="row">
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Arrival Date</h4>
                                         <div class="form-group">
@@ -610,11 +656,11 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Arrival Time</h4>
                                         <div class="form-group">
-                                            <input type="time"  name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
+                                            <input type="time" name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                         </div>
 
                                     </div>
@@ -622,7 +668,7 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Mode of Transport</h4>
                                         <div class="form-group">
@@ -654,7 +700,7 @@ if (isset($_POST['submit'])) {
                         <div class="row">
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Departure Date</h4>
                                         <div class="form-group">
@@ -666,11 +712,11 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Departure Time</h4>
                                         <div class="form-group">
-                                            <input type="time"  name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
+                                            <input type="time" name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                         </div>
 
                                     </div>
@@ -678,7 +724,7 @@ if (isset($_POST['submit'])) {
                             </div>
 
                             <div class="col-sm-12 col-md-6 col-lg-3">
-                                <div class="card">
+                                <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Mode of Transport</h4>
                                         <div class="form-group">
@@ -714,7 +760,8 @@ if (isset($_POST['submit'])) {
                             <div class="col-sm-12 col-md-6 col-lg-3">
                                 <div class="card">
                                     <div class="card-body">
-                                        <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope way + Lion Safari charges included )</h6>
+                                        <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope
+                                                way + Lion Safari charges included )</h6>
                                         </h4>
                                         <div class="custom-control custom-radio">
                                             <input type="radio" id="customRadio13" value="Going" name="feb13" class="custom-control-input">
@@ -839,50 +886,50 @@ if (isset($_POST['submit'])) {
             }
 
         });
-        
-        var optionValues =[];
-        $('#departure_mode_transport option').each(function(){
-           if($.inArray(this.value, optionValues) >-1){
-              $(this).remove()
-           }else{
-              optionValues.push(this.value);
-           }
+
+        var optionValues = [];
+        $('#departure_mode_transport option').each(function() {
+            if ($.inArray(this.value, optionValues) > -1) {
+                $(this).remove()
+            } else {
+                optionValues.push(this.value);
+            }
         });
-        
-        var optionValues =[];
-        $('#arrival_mode_transport option').each(function(){
-           if($.inArray(this.value, optionValues) >-1){
-              $(this).remove()
-           }else{
-              optionValues.push(this.value);
-           }
+
+        var optionValues = [];
+        $('#arrival_mode_transport option').each(function() {
+            if ($.inArray(this.value, optionValues) > -1) {
+                $(this).remove()
+            } else {
+                optionValues.push(this.value);
+            }
         });
-        
-        var optionValues =[];
-        $('#drop_point_place option').each(function(){
-           if($.inArray(this.value, optionValues) >-1){
-              $(this).remove()
-           }else{
-              optionValues.push(this.value);
-           }
+
+        var optionValues = [];
+        $('#drop_point_place option').each(function() {
+            if ($.inArray(this.value, optionValues) > -1) {
+                $(this).remove()
+            } else {
+                optionValues.push(this.value);
+            }
         });
-        
-        var optionValues =[];
-        $('#pick_point_place option').each(function(){
-           if($.inArray(this.value, optionValues) >-1){
-              $(this).remove()
-           }else{
-              optionValues.push(this.value);
-           }
+
+        var optionValues = [];
+        $('#pick_point_place option').each(function() {
+            if ($.inArray(this.value, optionValues) > -1) {
+                $(this).remove()
+            } else {
+                optionValues.push(this.value);
+            }
         });
-        
-        var optionValues =[];
-        $('#attend_evente option').each(function(){
-           if($.inArray(this.value, optionValues) >-1){
-              $(this).remove()
-           }else{
-              optionValues.push(this.value);
-           }
+
+        var optionValues = [];
+        $('#attend_evente option').each(function() {
+            if ($.inArray(this.value, optionValues) > -1) {
+                $(this).remove()
+            } else {
+                optionValues.push(this.value);
+            }
         });
     });
 </script>

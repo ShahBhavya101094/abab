@@ -29,9 +29,10 @@ if (isset($_POST['submit'])) {
     $feb13 = $_POST['feb13'];
     $feb14 = $_POST['feb14'];
     $status = $_POST['room_option'];
-    $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $adhar_number = $_POST['adhar_number'];
+    $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`,`adhar_number`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('isssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status);
+    $rc = $stmt->bind_param('issssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status, $adhar_number);
     $stmt->execute();
     echo "<script>alert('Guest details has been added');</script>";
     echo "<script>location.href='manage-guest.php';</script>";
@@ -56,7 +57,15 @@ if (isset($_POST['submit'])) {
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
-
+    <style>
+    .required .card-title:after {
+        color: #d00;
+        content: "*";
+        position: absolute;
+        margin-left: 3px;
+        top: 7px;
+    }
+    </style>
 </head>
 
 <body>
@@ -72,7 +81,8 @@ if (isset($_POST['submit'])) {
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -122,26 +132,30 @@ if (isset($_POST['submit'])) {
             <!-- Container fluid  -->
             <!-- ============================================================== -->
             <?php if (isset($_POST['submit'])) { ?>
-                <!-- <p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></p> -->
+            <!-- <p style="color: red"><?php echo htmlentities($_SESSION['msg']); ?><?php echo htmlentities($_SESSION['msg'] = ""); ?></p> -->
             <?php } ?>
 
             <div class="container-fluid">
-
+                <div class="alert alert-primary alert-dismissible bg-warning text-white border-0 fade show"
+                    role="alert">
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                    Please keep Aadhar card with you during your visit to Somnath ABAB
+                </div>
                 <form method="POST">
-
-                    <h4 class="card-title mt-5">Guest's Information</h4>
-
 
                     <div class="row">
 
 
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Guest Name</h4>
                                     <div class="form-group">
-                                        <input type="text" name="guest_name" id="guest_name" placeholder="Guest Name here.." class="form-control">
+                                        <input type="text" name="guest_name" id="guest_name"
+                                            placeholder="Guest Name here.." class="form-control" required="required">
                                     </div>
                                 </div>
                             </div>
@@ -149,7 +163,7 @@ if (isset($_POST['submit'])) {
 
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title"> Relation with Guest</h4>
                                     <div class="form-group">
@@ -171,31 +185,48 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Contact Number</h4>
                                     <div class="form-group">
-                                        <input type="text" name="guest_contact" id="guest_contact" placeholder="Guest Contact here.." class="form-control">
+                                        <input type="text" name="guest_contact" id="guest_contact"
+                                            placeholder="Guest Contact here.." class="form-control" required="required">
                                     </div>
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Address</h4>
                                     <div class="form-group">
 
-                                        <textarea name="guest_address" id="guest_address" class="form-control" placeholder="Enter Address" required></textarea>
+                                        <textarea name="guest_address" id="guest_address" class="form-control"
+                                            placeholder="Enter Address"></textarea>
                                     </div>
                                 </div>
                             </div>
                         </div>
 
-                    </div>
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card">
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
+                                <div class="card-body">
+                                    <h4 class="card-title">Adhar Card (12-Digit)</h4>
+                                    <div class="form-group mb-4">
+                                        <input type="text" class="form-control" id="adhar_number"
+                                            title="Enter Valid 12 Digit Adhar Card Number" name="adhar_number"
+                                            pattern="[0-9]{12}" require maxlength="12"
+                                            placeholder="Enter Adhar Card..." />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Room Option</h4>
                                     <div class="form-group mb-4">
@@ -203,7 +234,8 @@ if (isset($_POST['submit'])) {
 
 
                                             <option value="Dormitory 100/day (Rs.)">Dormitory 100/day (Rs.)</option>
-                                            <option value="Shared Room 700/day (Rs.)">Double Sharing 350/day (Rs.)</option>
+                                            <option value="Shared Room 700/day (Rs.)">Double Sharing 350/day (Rs.)
+                                            </option>
                                         </select>
                                     </div>
 
@@ -211,21 +243,25 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                    </div>
+                    <div class="row">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Food Option-1 </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio1" value="Tea"  name="food_status" class="custom-control-input">
+                                        <input type="radio" id="customRadio1" value="Tea" name="food_status"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio1">Tea</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio3" value="Coffee"  name="food_status" class="custom-control-input">
+                                        <input type="radio" id="customRadio3" value="Coffee" name="food_status"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio3">Coffee</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio4" value="Milk"  name="food_status" class="custom-control-input">
+                                        <input type="radio" id="customRadio4" value="Milk" name="food_status"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio4">Milk</label>
                                     </div>
 
@@ -236,16 +272,18 @@ if (isset($_POST['submit'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Food Option-2</h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio21" value="Normal" name="food_status2" class="custom-control-input">
+                                        <input type="radio" id="customRadio21" value="Normal" name="food_status2"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio21">Normal</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio22" value="Without Sugar"  name="food_status2" class="custom-control-input">
+                                        <input type="radio" id="customRadio22" value="Without Sugar" name="food_status2"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio22">Without Sugar</label>
                                     </div>
 
@@ -255,13 +293,14 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Place</h4>
                                     <div class="form-group mb-4">
-                                        <select class="custom-select mr-sm-2" id="pick_point_place" name="pick_point_place">
-                                           <option value="Veraval Railway Station">Veraval Railway Station</option>
+                                        <select class="custom-select mr-sm-2" id="pick_point_place"
+                                            name="pick_point_place">
+                                            <option value="Veraval Railway Station">Veraval Railway Station</option>
                                             <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                             <option value="Rajkot Airport">Rajkot Airport</option>
                                             <option value="Ahmedabad Railway Station">Ahmedabad Railway Station</option>
@@ -273,12 +312,13 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                        <div class="col-sm-12 col-md-6 col-lg-3">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Place</h4>
                                     <div class="form-group mb-4">
-                                        <select class="custom-select mr-sm-2" id="drop_point_place" name="drop_point_place">
+                                        <select class="custom-select mr-sm-2" id="drop_point_place"
+                                            name="drop_point_place">
                                             <option value="Veraval Railway Station">Veraval Railway Station</option>
                                             <option value="Rajkot Railway Station ">Rajkot Railway Station </option>
                                             <option value="Rajkot Airport">Rajkot Airport</option>
@@ -298,11 +338,12 @@ if (isset($_POST['submit'])) {
                     <div class="row ">
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Date</h4>
                                     <div class="form-group">
-                                        <input type="date" min="2023-02-01" min="2023-02-01" name="arrival_date" id="arrival_date" class="form-control" required>
+                                        <input type="date" min="2023-02-01" min="2023-02-01" name="arrival_date"
+                                            id="arrival_date" class="form-control" required="required">
                                     </div>
 
                                 </div>
@@ -310,11 +351,12 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="06:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" required>
+                                        <input type="time" min="06:00" max="22:00" name="arrival_time" id="arrival_time"
+                                            class="form-control" required="required">
                                     </div>
 
                                 </div>
@@ -322,11 +364,12 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Mode of Transport</h4>
                                     <div class="form-group">
-                                        <select class="custom-select mr-sm-2" id="arrival_mode_transport" name="arrival_mode_transport">
+                                        <select class="custom-select mr-sm-2" id="arrival_mode_transport"
+                                            name="arrival_mode_transport">
                                             <option value="By Road">By Road</option>
                                             <option value="By Flight">By Flight</option>
                                             <option value="By Train">By Train</option>
@@ -344,7 +387,8 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6>
                                     </h4>
                                     <div class="form-group">
-                                        <input type="text" name="arrival_mode_details" id="arrival_mode_details" class="form-control">
+                                        <input type="text" name="arrival_mode_details" id="arrival_mode_details"
+                                            class="form-control">
                                     </div>
 
                                 </div>
@@ -354,11 +398,12 @@ if (isset($_POST['submit'])) {
                     <div class="row">
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Date</h4>
                                     <div class="form-group">
-                                        <input type="date" min="2023-02-01" min="2023-02-01" name="departure_date" id="departure_date" class="form-control" required>
+                                        <input type="date" min="2023-02-01" min="2023-02-01" name="departure_date"
+                                            id="departure_date" class="form-control" required="required">
                                     </div>
 
                                 </div>
@@ -366,11 +411,12 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="06:00" max="22:00" name="departure_time" id="departure_time" class="form-control" required>
+                                        <input type="time" min="06:00" max="22:00" name="departure_time"
+                                            id="departure_time" class="form-control" required="required">
                                     </div>
 
                                 </div>
@@ -378,11 +424,12 @@ if (isset($_POST['submit'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-3">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Mode of Transport</h4>
                                     <div class="form-group">
-                                        <select class="custom-select mr-sm-2" id="departure_mode_transport" name="departure_mode_transport">
+                                        <select class="custom-select mr-sm-2" id="departure_mode_transport"
+                                            name="departure_mode_transport">
                                             <option value="By Road">By Road</option>
                                             <option value="By Flight">By Flight</option>
                                             <option value="By Train">By Train</option>
@@ -400,7 +447,8 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">Transport Details <h6>(Train/Flight Number)</h6>
                                     </h4>
                                     <div class="form-group">
-                                        <input type="text" name="departure_mode_details" id="departure_mode_details" class="form-control">
+                                        <input type="text" name="departure_mode_details" id="departure_mode_details"
+                                            class="form-control">
                                     </div>
 
                                 </div>
@@ -411,14 +459,17 @@ if (isset($_POST['submit'])) {
                     <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card">
-                                <div class="card-body">१०/२ - सोमनाथ (Somnath) <h6>( Free )</h6>
+                                <div class="card-body">
+                                    <h4 class="card-title">१०/२ - सोमनाथ (Somnath) <h6>( Free )</h6>
                                     </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio10" value="Going" name="feb10" class="custom-control-input">
+                                        <input type="radio" id="customRadio10" value="Going" name="feb10"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio10">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio102" value="Not Going" name="feb10" class="custom-control-input" checked>
+                                        <input type="radio" id="customRadio102" value="Not Going" name="feb10"
+                                            class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio102">Not Going</label>
                                     </div>
 
@@ -431,11 +482,13 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">११/२ - पोरबंदर (Porbandar) <h6>( Rs. 500/- )</h6>
                                     </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio11" value="Going" name="feb11" class="custom-control-input">
+                                        <input type="radio" id="customRadio11" value="Going" name="feb11"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio11">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio112" value="Not Going" name="feb11" class="custom-control-input" checked>
+                                        <input type="radio" id="customRadio112" value="Not Going" name="feb11"
+                                            class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio112">Not Going</label>
                                     </div>
 
@@ -448,11 +501,13 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">१२/२ - प्रभाष क्षेत्र (Near by Place) <h6>( Rs. 300/- )</h6>
                                     </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio12" value="Going" name="feb12" class="custom-control-input">
+                                        <input type="radio" id="customRadio12" value="Going" name="feb12"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio12">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio122" value="Not Going" name="feb12" class="custom-control-input" checked>
+                                        <input type="radio" id="customRadio122" value="Not Going" name="feb12"
+                                            class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio122">Not Going</label>
                                     </div>
 
@@ -463,14 +518,17 @@ if (isset($_POST['submit'])) {
                         <div class="col-sm-12 col-md-6 col-lg-3">
                             <div class="card">
                                 <div class="card-body">
-                                    <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope way + Lion Safari charges included )</h6>
+                                    <h4 class="card-title">१३/२ - सासण और गिरनार (Junagadh) <h6>( Rs. 1000/- ) ( Rope
+                                            way + Lion Safari charges included )</h6>
                                     </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio13" value="Going" name="feb13" class="custom-control-input">
+                                        <input type="radio" id="customRadio13" value="Going" name="feb13"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio13">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio132" value="Not Going" name="feb13" class="custom-control-input" checked>
+                                        <input type="radio" id="customRadio132" value="Not Going" name="feb13"
+                                            class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio132">Not Going</label>
                                     </div>
 
@@ -483,11 +541,13 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">१४/२ - द्वारिका (Dwarika) <h6>( Rs. 800/- )</h6>
                                     </h4>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio14" value="Going" name="feb14" class="custom-control-input">
+                                        <input type="radio" id="customRadio14" value="Going" name="feb14"
+                                            class="custom-control-input">
                                         <label class="custom-control-label" for="customRadio14">Going</label>
                                     </div>
                                     <div class="custom-control custom-radio">
-                                        <input type="radio" id="customRadio142" value="Not Going" name="feb14" class="custom-control-input" checked>
+                                        <input type="radio" id="customRadio142" value="Not Going" name="feb14"
+                                            class="custom-control-input" checked>
                                         <label class="custom-control-label" for="customRadio142">Not Going</label>
                                     </div>
 
