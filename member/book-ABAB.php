@@ -202,15 +202,15 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Food Option-1 </h4>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="customRadio1" value="Tea" <?php echo strpos($row->food_status, "Tea") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <input type="radio" id="customRadio1" value="Tea" <?php echo str_contains($row->food_status, "Tea")  ? "checked" : ""; ?> name="food_status" class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio1">Tea</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="customRadio3" value="Coffee" <?php echo strpos($row->food_status, "Coffee") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <input type="radio" id="customRadio3" value="Coffee" <?php echo str_contains($row->food_status, "Coffee")  ? "checked" : ""; ?> name="food_status" class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio3">Coffee</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="customRadio4" value="Milk" <?php echo strpos($row->food_status, "Milk") > 0 ? "checked" : ""; ?> name="food_status" class="custom-control-input">
+                                                <input type="radio" id="customRadio4" value="Milk" <?php echo str_contains($row->food_status, "Milk")  ? "checked" : ""; ?> name="food_status" class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio4">Milk</label>
                                             </div>
 
@@ -226,11 +226,11 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Food Option-2</h4>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="customRadio21" value="Normal" <?php echo strpos($row->food_status, "Normal") > 0 ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
+                                                <input type="radio" id="customRadio21" value="Normal" <?php echo str_contains($row->food_status, "Normal")  ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio21">Normal</label>
                                             </div>
                                             <div class="custom-control custom-radio">
-                                                <input type="radio" id="customRadio22" value="Without Sugar" <?php echo strpos($row->food_status, "Without Sugar") > 0 ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
+                                                <input type="radio" id="customRadio22" value="Without Sugar" <?php echo str_contains($row->food_status, "Without Sugar")  ? "checked" : ""; ?> name="food_status2" class="custom-control-input">
                                                 <label class="custom-control-label" for="customRadio22">Without Sugar</label>
                                             </div>
 
@@ -301,7 +301,7 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Arrival Time</h4>
                                             <div class="form-group">
-                                                <input type="time" min="07:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->arrival_time; ?>" required>
+                                                <input type="time"  name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->arrival_time; ?>" required>
                                             </div>
 
                                         </div>
@@ -358,7 +358,7 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Departure Time</h4>
                                             <div class="form-group">
-                                                <input type="time" min="07:00" max="22:00" name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->departure_time; ?>" required>
+                                                <input type="time"  name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->departure_time; ?>" required>
                                             </div>
 
                                         </div>
@@ -451,7 +451,7 @@ if (isset($_POST['submit'])) {
                                         <div class="card-body">
                                             <h4 class="card-title">Guest Count(Sister)</h4>
                                             <div class="form-group">
-                                                <input type="number" min="0" max="10" name="total_member_bro" id="total_member_bro" placeholder="Guest Sister Member here.." required class="form-control" value="<?php echo $row->total_member_bro; ?>">
+                                                <input type="number" min="0" max="10" name="total_member_bro" id="total_member_bro" placeholder="Guest Sister Member here.." class="form-control" value="<?php echo $row->total_member_bro; ?>">
                                             </div>
                                         </div>
                                     </div>
@@ -614,7 +614,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <h4 class="card-title">Arrival Time</h4>
                                         <div class="form-group">
-                                            <input type="time" min="06:00" max="22:00" name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
+                                            <input type="time"  name="arrival_time" id="arrival_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                         </div>
 
                                     </div>
@@ -670,7 +670,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <h4 class="card-title">Departure Time</h4>
                                         <div class="form-group">
-                                            <input type="time" min="06:00" max="22:00" name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
+                                            <input type="time"  name="departure_time" id="departure_time" class="form-control" value="<?php echo $row->From_Time; ?>" required>
                                         </div>
 
                                     </div>
@@ -762,7 +762,7 @@ if (isset($_POST['submit'])) {
                                     <div class="card-body">
                                         <h4 class="card-title">Guest Count(Sister)</h4>
                                         <div class="form-group">
-                                            <input type="number" min="0" max="10" name="total_member_bro" id="total_member_bro" placeholder="Guest Sister Member here.." required class="form-control">
+                                            <input type="number" min="0" max="10" name="total_member_bro" id="total_member_bro" placeholder="Guest Sister Member here.." class="form-control">
                                         </div>
                                     </div>
                                 </div>
@@ -838,6 +838,51 @@ if (isset($_POST['submit'])) {
                 $('#ppincode').val($('#pincode').val());
             }
 
+        });
+        
+        var optionValues =[];
+        $('#departure_mode_transport option').each(function(){
+           if($.inArray(this.value, optionValues) >-1){
+              $(this).remove()
+           }else{
+              optionValues.push(this.value);
+           }
+        });
+        
+        var optionValues =[];
+        $('#arrival_mode_transport option').each(function(){
+           if($.inArray(this.value, optionValues) >-1){
+              $(this).remove()
+           }else{
+              optionValues.push(this.value);
+           }
+        });
+        
+        var optionValues =[];
+        $('#drop_point_place option').each(function(){
+           if($.inArray(this.value, optionValues) >-1){
+              $(this).remove()
+           }else{
+              optionValues.push(this.value);
+           }
+        });
+        
+        var optionValues =[];
+        $('#pick_point_place option').each(function(){
+           if($.inArray(this.value, optionValues) >-1){
+              $(this).remove()
+           }else{
+              optionValues.push(this.value);
+           }
+        });
+        
+        var optionValues =[];
+        $('#attend_evente option').each(function(){
+           if($.inArray(this.value, optionValues) >-1){
+              $(this).remove()
+           }else{
+              optionValues.push(this.value);
+           }
         });
     });
 </script>
