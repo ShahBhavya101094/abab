@@ -43,6 +43,7 @@ if (isset($_POST['submit'])) {
         echo "<script>alert('ABAB Details has Been updated Succssfully');</script>";
 
         echo "<script>location.href='manage-guest.php';</script>";
+       
     }
 }
 ?>
@@ -142,6 +143,7 @@ if (isset($_POST['submit'])) {
         <!-- Page wrapper  -->
         <!-- ============================================================== -->
         <div class="page-wrapper">
+            
         <div class="alert alert-primary alert-dismissible bg-warning text-white border-0 fade show" role="alert">
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
@@ -188,7 +190,7 @@ if (isset($_POST['submit'])) {
 
 
                             <div class="col-7 align-self-center">
-                                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">ABAB Bookings</h4>
+                                <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">ABAB Bookings <a class="btn btn-primary" href="./userdetails.php" role="button">Print</a></h4>
                             </div>
                             <div class="row">
 
