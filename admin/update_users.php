@@ -4,7 +4,7 @@ include('../includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
 include('../includes/check-login.php');
 check_login();
-$aid = $_SESSION['id'];
+$aid = $_POST['uid'];
 if (isset($_POST['update'])) {
 
     $fullname = $_POST['fullname'];
@@ -133,6 +133,7 @@ if (isset($_POST['update'])) {
                                     <h4 class="card-title">Prant Name</h4>
                                     <div class="form-group">
                                         <input type="text" value="<?php echo $row->pranat; ?>" class="form-control" required readonly>
+                                        <input type="hidden" value="<?php echo $aid; ?>">
                                     </div>
 
                                 </div>
