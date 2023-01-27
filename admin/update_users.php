@@ -20,8 +20,8 @@ if (isset($_POST['update'])) {
     $stmt = $mysqli->prepare($query);
     $rc = $stmt->bind_param('ssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number, $aid);
     $stmt->execute();
-    echo "<script>alert('Profile updated Succssfully');</script>";
-    echo "<script>location.href='book-ABAB.php';</script>";
+    echo "<script>alert('Adhikari profile updated Succssfully');</script>";
+    echo "<script>location.href='view-members-acc.php';</script>";
 }
 ?>
 

@@ -7,21 +7,26 @@ check_login();
 $aid = $_SESSION['id'];
 if (isset($_POST['update'])) {
 
+    $pranat = $_POST['pranat'];
+    $vibhag = $_POST['vibhag'];
+    $dayitwa = $_POST['dayitwa'];
     $fullname = $_POST['fullname'];
     $address = $_POST['address'];
     $dob = $_POST['dob'];
     $gender = $_POST['gender'];
+    
     $email = $_POST['email'];
+    $mobile = $_POST['mobile'];
     $district = $_POST['district'];
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
-    $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=?,adhar_number=? where id=?";
+    $query = "INSERT INTO `user_reg` ( `pranat`, `category`, `vibhag`, `letter`, `dayitwa`, `role`, `fullname`, `gender`, `address_info`, `mobile`, `email`, `dob`, `district`, `password`, `adhar_number`,`passUdateDate`, `reg_status`) VALUES ( ?, ' ', ?, ' ', ?, ' ', ?, ?, ?, ?, ?, ?, ?, '21232f297a57a5a743894a0e4a801fc3',?, ?, '0')";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('ssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number, $aid);
+    $rc = $stmt->bind_param('ssssssssssss', $pranat,$vibhag,$dayitwa ,$fullname, $gender, $address, $mobile,$email, $dob, $district, $adhar_number,$udate);
     $stmt->execute();
-    echo "<script>alert('Profile updated Succssfully');</script>";
-    echo "<script>location.href='book-ABAB.php';</script>";
+    echo "<script>alert('Adhikari add Succssfully and Password - abab@2023');</script>";
+    echo "<script>location.href='view-members-acc.php';</script>";
 }
 ?>
 
@@ -78,7 +83,8 @@ if (isset($_POST['update'])) {
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
+    <div id="main-wrapper" data-theme="light" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full"
+        data-sidebar-position="fixed" data-header-position="fixed" data-boxed-layout="full">
         <!-- ============================================================== -->
         <!-- Topbar header - style you can find in pages.scss -->
         <!-- ============================================================== -->
@@ -112,27 +118,36 @@ if (isset($_POST['update'])) {
             <div class="container-fluid">
 
                 <div class="align-self-center text-center">
-                    <h4 class="page-title center text-truncate text-dark font-weight-medium mb-4">My User Profile</h4>
+                    <h4 class="page-title center text-truncate text-dark font-weight-medium mb-4">Add User Profile</h4>
                 </div>
-                <div class="row">
 
-                    <?php
-                    $aid = $_SESSION['id'];
-                    $ret = "select * from user_reg where id=?";
+
+                <form name="registration" method="POST">
+                    <div class="row">
+
+
+
+                        <div class="col-md-4">
+                            <div class="card required">
+                                <div class="card-body">
+                                    <h4 class="card-title">Prant Name</h4>
+                                    <div class="form-group">
+                                        <select class="custom-select mr-sm-2" required name="pranat"
+                                            placeholder="Select Prant Name">
+                                            <?php
+                    $aid = 0;
+                    $gid = $_GET['gid'];
+                    $ret = "SELECT DISTINCT`pranat` FROM `user_reg`";
                     $stmt = $mysqli->prepare($ret);
-                    $stmt->bind_param('i', $aid);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
                     //$cnt=1;
                     while ($row = $res->fetch_object()) {
                     ?>
-
-                        <div class="col-md-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Prant Name</h4>
-                                    <div class="form-group">
-                                        <input type="text" value="<?php echo $row->pranat; ?>" class="form-control" required readonly>
+                                            <option value="<?php echo $row->pranat; ?>"><?php echo $row->pranat; ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -144,11 +159,25 @@ if (isset($_POST['update'])) {
 
 
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Vibhag Name</h4>
                                     <div class="form-group">
-                                        <input type="text" value="<?php echo $row->vibhag; ?>" class="form-control" required readonly>
+                                        <select class="custom-select mr-sm-2" name="vibhag">
+                                            <?php
+                    $aid = 0;
+                    $gid = $_GET['gid'];
+                    $ret = "SELECT DISTINCT`vibhag` FROM `user_reg`";
+                    $stmt = $mysqli->prepare($ret);
+                    $stmt->execute(); //ok
+                    $res = $stmt->get_result();
+                    //$cnt=1;
+                    while ($row = $res->fetch_object()) {
+                    ?>
+                                            <option value="<?php echo $row->vibhag; ?>"><?php echo $row->vibhag; ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
                                     </div>
 
                                 </div>
@@ -157,11 +186,26 @@ if (isset($_POST['update'])) {
 
 
                         <div class="col-md-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Dayitwa Name</h4>
                                     <div class="form-group">
-                                        <input type="text" value="<?php echo $row->dayitwa; ?>" class="form-control" required readonly>
+                                        <select class="custom-select mr-sm-2" name="dayitwa">
+                                            <?php
+                    $aid = 0;
+                    $gid = $_GET['gid'];
+                    $ret = "SELECT DISTINCT`dayitwa` FROM `user_reg`";
+                    $stmt = $mysqli->prepare($ret);
+                    $stmt->execute(); //ok
+                    $res = $stmt->get_result();
+                    //$cnt=1;
+                    while ($row = $res->fetch_object()) {
+                    ?>
+                                            <option value="<?php echo $row->dayitwa; ?>"><?php echo $row->dayitwa; ?>
+                                            </option>
+                                            <?php } ?>
+                                        </select>
+
                                     </div>
 
                                 </div>
@@ -170,10 +214,8 @@ if (isset($_POST['update'])) {
 
 
 
-                </div>
+                    </div>
 
-
-                <form name="registration"  method="POST">
 
                     <div class="row">
 
@@ -182,7 +224,8 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Full Name</h4>
                                     <div class="form-group">
-                                        <input type="text" name="fullname" id="fullname" class="form-control" value="<?php echo $row->fullname; ?>" required="required">
+                                        <input type="text" name="fullname" id="fullname" class="form-control"
+                                            required="required">
                                     </div>
 
                                 </div>
@@ -195,7 +238,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Address Details</h4>
                                     <div class="form-group">
-                                        <textarea name="address" id="address" class="form-control"><?php echo $row->address_info; ?></textarea>
+                                        <textarea name="address" id="address" class="form-control"></textarea>
                                     </div>
 
                                 </div>
@@ -215,7 +258,8 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Mobile</h4>
                                     <div class="form-group">
-                                        <input type="text" name="mobile" id="mobile" maxlength="10" class="form-control" value="<?php echo $row->mobile; ?>" readonly>
+                                        <input type="text" name="mobile" id="mobile" maxlength="10"
+                                            class="form-control">
                                     </div>
                                 </div>
                             </div>
@@ -225,7 +269,8 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Email Address</h4>
                                     <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control" value="<?php echo $row->email; ?>" required="required">
+                                        <input type="email" name="email" id="email" class="form-control"
+                                            required="required">
                                     </div>
                                 </div>
                             </div>
@@ -236,7 +281,10 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Adhar Card :</h4>
                                     <div class="form-group mb-4">
-                                        <input type="text" class="form-control" id="adhar_number" title="Enter Valid 12 Digit Adhar Card Number" value="<?php echo $row->adhar_number; ?>" name="adhar_number" pattern="[0-9]{12}" require minlength="12" maxlength="12" placeholder="Enter Adhar Card..." />
+                                        <input type="text" class="form-control" id="adhar_number"
+                                            title="Enter Valid 12 Digit Adhar Card Number" name="adhar_number"
+                                            pattern="[0-9]{12}" require minlength="12" maxlength="12"
+                                            placeholder="Enter Adhar Card..." />
 
                                     </div>
 
@@ -249,7 +297,6 @@ if (isset($_POST['update'])) {
                                     <h4 class="card-title">Gender</h4>
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="gender" name="gender">
-                                            <option value="<?php echo $row->gender; ?>"><?php echo $row->gender; ?></option>
                                             <option value="Brother">Brother</option>
                                             <option value="Sister">Sister</option>
                                         </select>
@@ -263,7 +310,8 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Date of Birth</h4>
                                     <div class="form-group">
-                                        <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control" value="<?php echo $row->dob; ?>" required="required">
+                                        <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control"
+                                            required="required">
                                     </div>
                                 </div>
                             </div>
@@ -276,7 +324,8 @@ if (isset($_POST['update'])) {
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="district" name="district">
                                             <?php if ($row->district != "") { ?>
-                                                <option value="<?php echo $row->district; ?>"><?php echo $row->district; ?></option>
+                                            <option value="<?php echo $row->district; ?>"><?php echo $row->district; ?>
+                                            </option>
                                             <?php } ?>
                                             <option value="Other">Other</option>
 
@@ -286,13 +335,12 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                    <?php } ?>
 
                     </div>
 
                     <div class="form-actions">
                         <div class="text-center">
-                            <button type="submit" name="update" class="btn btn-success">Make Changes</button>
+                            <button type="submit" name="update" class="btn btn-success">Add Adhikari</button>
                         </div>
                     </div>
 

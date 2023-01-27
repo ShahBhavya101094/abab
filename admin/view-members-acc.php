@@ -118,7 +118,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                            <a href="add-guests.php"><button type="button" class="btn btn-block btn-md btn-success">Add New Member Details</button></a>
+                            <a href="add-users.php"><button type="button" class="btn btn-block btn-md btn-success">Add New Member Details</button></a>
                                 <hr>
                                 <h6 class="card-subtitle">Displaying all the registered member's account.</h6>
                                 <div class="table-responsive">
