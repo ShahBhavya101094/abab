@@ -4,7 +4,7 @@ include('../includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
 include('../includes/check-login.php');
 check_login();
-$aid = $_POST['uid'];
+$aid = $_GET['uid'];
 if (isset($_POST['update'])) {
     $pranat = $_POST['pranat'];
     $vibhag = $_POST['vibhag'];
@@ -152,7 +152,7 @@ if (isset($_POST['update'])) {
                                             <?php
 
 $ret1 = "SELECT DISTINCT`pranat` FROM `user_reg`";
-$stmt = $mysqli->prepare($ret1);
+$stmt1 = $mysqli->prepare($ret1);
 $stmt1->execute(); //ok
 $res1 = $stmt1->get_result();
 //$cnt=1;
@@ -181,7 +181,7 @@ while ($row1 = $res1->fetch_object()) {
                                         <?php
 
 $ret1 = "SELECT DISTINCT`vibhag` FROM `user_reg`";
-$stmt = $mysqli->prepare($ret1);
+$stmt1 = $mysqli->prepare($ret1);
 $stmt1->execute(); //ok
 $res1 = $stmt1->get_result();
 //$cnt=1;
@@ -207,7 +207,7 @@ while ($row1 = $res1->fetch_object()) {
                                         <?php
 
 $ret1 = "SELECT DISTINCT`dayitwa` FROM `user_reg`";
-$stmt = $mysqli->prepare($ret1);
+$stmt1 = $mysqli->prepare($ret1);
 $stmt1->execute(); //ok
 $res1 = $stmt1->get_result();
 //$cnt=1;
