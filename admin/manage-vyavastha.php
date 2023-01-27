@@ -111,7 +111,7 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
-                            <a href="add_users.php"><button type="button" class="btn btn-block btn-md btn-success">Add Vyavastha Member Details</button></a>
+                            <a href="add_vyavastha.php"><button type="button" class="btn btn-block btn-md btn-success">Add Vyavastha Member Details</button></a>
                                 
                             <hr>
                                 <div class="table-responsive">
