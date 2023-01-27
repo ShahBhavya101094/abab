@@ -29,10 +29,11 @@ if (isset($_POST['submit'])) {
     $feb13 = $_POST['feb13'];
     $feb14 = $_POST['feb14'];
     $status = $_POST['room_option'];
+    $guest_gender = $_POST['guest_gender'];
     $adhar_number = $_POST['adhar_number'];
-    $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`,`adhar_number`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
+    $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`,`adhar_number`,guest_gender) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('issssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status, $adhar_number);
+    $rc = $stmt->bind_param('isssssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address,  $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status, $adhar_number,$guest_gender);
     $stmt->execute();
     echo "<script>alert('Guest details has been added');</script>";
     echo "<script>location.href='manage-guest.php';</script>";
@@ -186,15 +187,17 @@ if (isset($_POST['submit'])) {
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
-                                    <h4 class="card-title">Address</h4>
-                                    <div class="form-group">
-
-                                        <textarea name="guest_address" id="guest_address" class="form-control"
-                                            placeholder="Enter Address"></textarea>
+                                    <h4 class="card-title">Gender</h4>
+                                    <div class="form-group mb-4">
+                                        <select class="custom-select mr-sm-2" id="guest_gender" name="guest_gender">
+                                            <option value="Brother">Brother</option>
+                                            <option value="Sister">Sister</option>
+                                        </select>
                                     </div>
                                 </div>
                             </div>
                         </div>
+                       
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
@@ -224,6 +227,18 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
+                                <div class="card-body">
+                                    <h4 class="card-title">Address</h4>
+                                    <div class="form-group">
+
+                                        <textarea name="guest_address" id="guest_address" class="form-control"
+                                            placeholder="Enter Address"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
@@ -245,7 +260,7 @@ if (isset($_POST['submit'])) {
 
                     </div>
                     <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Food Option-1 </h4>
@@ -272,7 +287,7 @@ if (isset($_POST['submit'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Food Option-2</h4>
@@ -293,7 +308,7 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Place</h4>
@@ -312,7 +327,7 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Place</h4>
