@@ -25,8 +25,8 @@ if (isset($_POST['update'])) {
     $stmt = $mysqli->prepare($query);
     $rc = $stmt->bind_param('ssssssssi', $name,$gender,$mobile ,$sub_team, $no_days, $arrival_date, $departure_date,$status,$vid);
     $stmt->execute();
-   // echo "<script>alert('ABAB Yyavastha adhikari update Succssfully');</script>";
-    //echo "<script>location.href='manage-vyavastha.php';</script>";
+    echo "<script>alert('ABAB Yyavastha adhikari updated Succssfully');</script>";
+    echo "<script>location.href='manage-vyavastha.php';</script>";
 }
 ?>
 
