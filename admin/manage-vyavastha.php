@@ -146,10 +146,10 @@
                                         <tr><td><?php echo $cnt;;?></td>
                                         <td><?php echo $row->name;?></td>
                                         <td><?php echo $row->gender;?></td>
-                                        <td>$<?php echo $row->mobile;?></td>
+                                        <td><?php echo $row->mobile;?></td>
                                         <td><?php echo $row->sub_team;?></td>
                                         <td><?php echo $row->no_days;?></td>
-                                        <td>$<?php echo $row->date_arrival;?></td>
+                                        <td><?php echo $row->date_arrival;?></td>
                                         <td><?php echo $row->date_depature;?></td>
                                         <td><?php echo $row->status;?></td>
                                         <td><a href="update_vyavastha.php?uid=<?php echo $row->id;?>" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
