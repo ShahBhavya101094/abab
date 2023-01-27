@@ -219,7 +219,7 @@ if (isset($_POST['submit'])) {
                                     <div class="form-group mb-4">
                                         <input type="text" class="form-control" id="adhar_number"
                                             title="Enter Valid 12 Digit Adhar Card Number" name="adhar_number"
-                                            pattern="[0-9]{12}" require maxlength="12"
+                                            pattern="[0-9]{12}" required="required" maxlength="12"
                                             placeholder="Enter Adhar Card..." />
 
                                     </div>

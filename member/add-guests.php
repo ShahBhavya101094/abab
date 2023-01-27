@@ -204,7 +204,8 @@ if (isset($_POST['submit'])) {
                                     <h4 class="card-title">Contact Number</h4>
                                     <div class="form-group">
                                         <input type="text" name="guest_contact" id="guest_contact"
-                                            placeholder="Guest Contact here.." class="form-control" required="required">
+                                            placeholder="Guest Contact here.." class="form-control"   
+                                            title="Enter Valid 10 Digit Mobile Number" pattern="[0-9]{10}" required="required" maxlength="10" >
                                     </div>
                                 </div>
                             </div>
