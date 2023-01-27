@@ -128,6 +128,7 @@
                                                 <th>DATE- ARRIVAL</th>
                                                 <th>DATE- DEPARTURE</th>
                                                 <th>Status</th>
+                                                <th>PRINT</th>
                                                 <th>Actions</th>
                                             </tr>
                                         </thead>
@@ -152,6 +153,8 @@
                                         <td><?php echo $row->date_arrival;?></td>
                                         <td><?php echo $row->date_depature;?></td>
                                         <td><?php echo $row->status;?></td>
+                                        <td><a href="vyavastha_details.php?gid=<?php echo $row->id; ?>"  class="btn btn-danger"title="Edit">PRINT</a>&nbsp;&nbsp;
+                                                    </td>
                                         <td><a href="update_vyavastha.php?uid=<?php echo $row->id;?>" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
                                         <a href="manage-vyavastha.php?del=<?php echo $row->id;?>" title="Delete" onclick="return confirm("Do you want to delete");"><i class="icon-close" style="color:red;"></i></a></td>
                                         </tr>
