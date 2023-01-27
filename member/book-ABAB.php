@@ -148,7 +148,7 @@ if (isset($_POST['submit'])) {
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                Please keep AAadhaarcard with you during your visit to Somnath ABAB
+                Please keep Aadhaarcard with you during your visit to Somnath ABAB
             </div>
 
             <!-- ============================================================== -->
