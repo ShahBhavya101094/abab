@@ -54,7 +54,15 @@ if (isset($_POST['update'])) {
             } return true;
      }
     </script> -->
-
+    <style>
+    .required .card-title:after {
+        color: #d00;
+        content: "*";
+        position: absolute;
+        margin-left: 3px;
+        top: 7px;
+    }
+    </style>
 </head>
 
 <body>
@@ -165,12 +173,12 @@ if (isset($_POST['update'])) {
                 </div>
 
 
-                <form name="registration" onSubmit="return valid();" method="POST">
+                <form name="registration"  method="POST">
 
                     <div class="row">
 
                         <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Full Name</h4>
                                     <div class="form-group">
@@ -183,7 +191,7 @@ if (isset($_POST['update'])) {
 
 
                         <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Address Details</h4>
                                     <div class="form-group">
@@ -203,7 +211,7 @@ if (isset($_POST['update'])) {
                         <!-- By Vkendra - Vkendra.com -->
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Mobile</h4>
                                     <div class="form-group">
@@ -213,7 +221,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Email Address</h4>
                                     <div class="form-group">
@@ -236,7 +244,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Gender</h4>
                                     <div class="form-group mb-4">
@@ -251,7 +259,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">Date of Birth</h4>
                                     <div class="form-group">
@@ -262,7 +270,7 @@ if (isset($_POST['update'])) {
                         </div>
 
                         <div class="col-sm-12 col-md-6 col-lg-4 d-none">
-                            <div class="card">
+                            <div class="card required">
                                 <div class="card-body">
                                     <h4 class="card-title">District</h4>
                                     <div class="form-group mb-4">
