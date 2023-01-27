@@ -183,18 +183,6 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Contact Number</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="guest_contact" id="guest_contact"
-                                            placeholder="Guest Contact here.." class="form-control" required="required">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
@@ -207,6 +195,18 @@ if (isset($_POST['submit'])) {
                                 </div>
                             </div>
                         </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
+                                <div class="card-body">
+                                    <h4 class="card-title">Contact Number</h4>
+                                    <div class="form-group">
+                                        <input type="text" name="guest_contact" id="guest_contact"
+                                            placeholder="Guest Contact here.." class="form-control" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                       
 
 
                         <div class="col-sm-12 col-md-6 col-lg-4">

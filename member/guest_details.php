@@ -109,8 +109,8 @@ check_login();
                     $aid = $_SESSION['id'];
                     $gid = $_GET['gid'];
                     $ret = "SELECT * FROM `abab_guest_booking` where id=? and uid=?";
-                    $stmt = $mysqli->prepare($ret,$gid);
-                    $stmt->bind_param('ii', $aid);
+                    $stmt = $mysqli->prepare($ret);
+                    $stmt->bind_param('ii', $gid,$aid);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
                     //$cnt=1;
@@ -180,10 +180,6 @@ check_login();
             <tr>
                 <th class="tg-0lax">१४/२ - द्वारिका (Dwarika)</th>
                 <td class="tg-0pky" colspan="2"> <?php echo $row->feb14; ?></td>
-            </tr>
-            <tr>
-                <th class="tg-0lax">Guest Count</th>
-                <td class="tg-0pky" colspan="2"> Brother - <?php echo $row->total_member_bro; ?> | Sister - <?php echo $row->total_member_sis; ?></td>
             </tr>
         </tbody>
     </table>
