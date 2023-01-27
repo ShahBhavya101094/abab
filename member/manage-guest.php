@@ -124,6 +124,7 @@ if (isset($_GET['del'])) {
                                                 <th>१३/२ - सासण और गिरनार</th>
                                                 <th>१४/२ - द्वारिका</th>
                                                 <th>Actions</th>
+                                                <th>PRINT</th>
                                             </tr>
                                         </thead>
                                         <tbody>
@@ -150,8 +151,10 @@ if (isset($_GET['del'])) {
                                                     <td><?php echo $row->feb13; ?></td>
                                                     
                                                     <td><?php echo $row->feb14; ?></td>
+                                                    <td><a href="guest_details.php?gid=<?php echo $row->id; ?>"  class="btn btn-danger"title="Edit">PRINT</a>&nbsp;&nbsp;
+                                                    </td>
                                                     <td><a href="edit-guest.php?id=<?php echo $row->id; ?>" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
-                                                        <a href="manage-guest.php?del=<?php echo $row->id; ?>" title="Delete" onclick="return confirm(" Do you want to delete");"><i class="icon-close" style="color:red;"></i></a>
+                                                        <a href="manage-guest.php?del=<?php echo $row->id; ?>" title="Delete" onclick="return confirm(" Do you want to delete Guest Details");"><i class="icon-close" style="color:red;"></i></a>
                                                     </td>
                                                 </tr>
                                             <?php

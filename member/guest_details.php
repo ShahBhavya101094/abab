@@ -17,7 +17,7 @@ check_login();
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="../assets/images/favicon.png">
-    <title>ABAB Management System</title>
+    <title>ABAB Guest Registration - PRINT</title>
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
@@ -107,9 +107,10 @@ check_login();
 <body>
     <?php
                     $aid = $_SESSION['id'];
-                    $ret = "SELECT d.*,p.* from user_reg as d,abab_booking as p where d.id = p.uid and uid=?";
-                    $stmt = $mysqli->prepare($ret);
-                    $stmt->bind_param('i', $aid);
+                    $gid = $_GET['gid'];
+                    $ret = "SELECT * FROM `abab_guest_booking` where id=? and uid=?";
+                    $stmt = $mysqli->prepare($ret,$gid);
+                    $stmt->bind_param('ii', $aid);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
                     //$cnt=1;
@@ -121,7 +122,7 @@ check_login();
                 <th  colspan="2" width="80%" >
                     <h1 class="d-flex justify-content-center align-items-center">ABAB Adhikari Registration Details</h1>
                 </th>
-                <th class="tg-0lax"><img src="../includes/qrcodepic.php?data=<?php echo $row->mobile; ?>&<?php echo $row->email; ?>"></img></th>
+                <th class="tg-0lax"><img src="../includes/qrcodepic.php?data=GUEST:<?php echo $row->guest_contact; ?>"></img></th>
             </tr>
     </table>
     <table class="table" width="100%">
@@ -129,27 +130,23 @@ check_login();
         <tbody>
             <tr>
                 <th class="tg-0pky">Full Name :</th>
-                <td class="tg-0pky" colspan="2" width="80%"> <?php echo $row->fullname; ?></td>
+                <td class="tg-0pky" colspan="2" width="80%"> <?php echo $row->guest_name; ?></td>
             </tr>
             <tr>
-                <th class="tg-0pky">Dayitwa :</th>
-                <td class="tg-0pky" colspan="2"> Prant - <?php echo $row->pranat; ?> | Vibhag - <?php echo $row->vibhag; ?> | Dayitwa - <?php echo $row->dayitwa; ?></td>
+                <th class="tg-0pky">Relation :</th>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->guest_relation; ?></td>
             </tr>
             <tr>
                 <th class="tg-0pky">Mobile : </th>
-                <td class="tg-0pky" colspan="2"> <?php echo $row->mobile; ?></td>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->guest_contact; ?></td>
             </tr>
             <tr>
-                <th class="tg-0pky">Email : </th>
-                <td class="tg-0pky" colspan="2"> <?php echo $row->email; ?></td>
+                <th class="tg-0pky">Room Option : </th>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->status; ?></td>
             </tr>
             <tr>
                 <th class="tg-0pky">Address : </th>
-                <td class="tg-0pky" colspan="2"> <?php echo $row->address_info; ?></td>
-            </tr>
-            <tr>
-                <th class="tg-0pky">Gender : </th>
-                <td class="tg-0pky" colspan="2"> <?php echo $row->gender; ?></td>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->guest_address; ?></td>
             </tr>
             <tr>
                 <th class="tg-0lax">Arrival Details</th>
@@ -162,6 +159,19 @@ check_login();
             <tr>
                 <th class="tg-0lax">Food Option</th>
                 <td class="tg-0pky" colspan="2"> <?php echo $row->food_status; ?></td>
+            </tr>
+
+            <tr>
+                <th class="tg-0lax">१०/२ - सोमनाथ (Somnath)</th>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->feb10; ?></td>
+            </tr>
+            <tr>
+                <th class="tg-0lax">११/२ - पोरबंदर (Porbandar)</th>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->feb11; ?></td>
+            </tr>
+            <tr>
+                <th class="tg-0lax">१२/२ - प्रभाष क्षेत्र (Near by Place)</th>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->feb12; ?></td>
             </tr>
             <tr>
                 <th class="tg-0lax">१३/२ - सासण और गिरनार (Junagadh)</th>

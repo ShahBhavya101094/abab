@@ -35,7 +35,7 @@ if (isset($_POST['login'])) {
             echo "<script>location.href='member/profile.php';</script>";
         }
     } else {
-        echo "<script>alert('Sorry, Invalid Username/Email or Password!');</script>";
+        echo "<script>alert('Sorry invalid mobile no. or password!');</script>";
     }
 }
 ?>

@@ -14,9 +14,11 @@ if (isset($_POST['update'])) {
     $email = $_POST['email'];
     $district = $_POST['district'];
     $udate = date('d-m-Y h:i:s', time());
-    $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=? where id=?";
+
+    $adhar_number = $_POST['adhar_number'];
+    $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=?,adhar_number=? where id=?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('sssssss', $fullname, $gender, $address, $email, $dob,$district, $aid);
+    $rc = $stmt->bind_param('ssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number, $aid);
     $stmt->execute();
     echo "<script>alert('Profile updated Succssfully');</script>";
     echo "<script>location.href='book-ABAB.php';</script>";
@@ -131,7 +133,7 @@ if (isset($_POST['update'])) {
 
                         <!-- By Vkendra - Vkendra.com -->
 
-                      
+
 
                         <div class="col-md-4">
                             <div class="card">
@@ -158,7 +160,7 @@ if (isset($_POST['update'])) {
                             </div>
                         </div>
 
-                        
+
 
                 </div>
 
@@ -167,7 +169,7 @@ if (isset($_POST['update'])) {
 
                     <div class="row">
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Full Name</h4>
@@ -180,7 +182,7 @@ if (isset($_POST['update'])) {
                         </div>
 
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
+                        <div class="col-sm-12 col-md-6 col-lg-6">
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Address Details</h4>
@@ -194,6 +196,45 @@ if (isset($_POST['update'])) {
 
 
 
+
+
+
+
+                        <!-- By Vkendra - Vkendra.com -->
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Mobile</h4>
+                                    <div class="form-group">
+                                        <input type="text" name="mobile" id="mobile" maxlength="10" class="form-control" value="<?php echo $row->mobile; ?>" readonly>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h4 class="card-title">Email Address</h4>
+                                    <div class="form-group">
+                                        <input type="email" name="email" id="email" class="form-control" value="<?php echo $row->email; ?>" required="required">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="card required">
+                                <div class="card-body">
+                                    <h4 class="card-title">Adhar Card :</h4>
+                                    <div class="form-group mb-4">
+                                        <input type="text" class="form-control" id="adhar_number" title="Enter Valid 12 Digit Adhar Card Number" value="<?php echo $row->adhar_number; ?>" name="adhar_number" pattern="[0-9]{12}" require maxlength="12" placeholder="Enter Adhar Card..." />
+
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card">
                                 <div class="card-body">
@@ -214,7 +255,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Date of Birth</h4>
                                     <div class="form-group">
-                                        <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control" value="<?php echo $row->dob;?>" required="required">
+                                        <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control" value="<?php echo $row->dob; ?>" required="required">
                                     </div>
                                 </div>
                             </div>
@@ -226,37 +267,12 @@ if (isset($_POST['update'])) {
                                     <h4 class="card-title">District</h4>
                                     <div class="form-group mb-4">
                                         <select class="custom-select mr-sm-2" id="district" name="district">
-                                            <?php if($row->district != "") { ?>
-                                            <option value="<?php echo $row->district; ?>"><?php echo $row->district; ?></option>
+                                            <?php if ($row->district != "") { ?>
+                                                <option value="<?php echo $row->district; ?>"><?php echo $row->district; ?></option>
                                             <?php } ?>
                                             <option value="Other">Other</option>
 
                                         </select>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Email Address</h4>
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control" value="<?php echo $row->email;?>" required="required">
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <!-- By Vkendra - Vkendra.com -->
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card">
-                                <div class="card-body">
-                                    <h4 class="card-title">Contact Number</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="mobile" id="mobile" maxlength="10" class="form-control" value="<?php echo $row->mobile;?>" readonly>
                                     </div>
                                 </div>
                             </div>
