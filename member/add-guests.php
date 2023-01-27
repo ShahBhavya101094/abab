@@ -259,8 +259,6 @@ if (isset($_POST['submit'])) {
                             </div>
                         </div>
 
-                    </div>
-                    <div class="row">
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
