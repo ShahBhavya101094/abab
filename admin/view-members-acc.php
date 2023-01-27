@@ -118,6 +118,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                            <a href="add-guests.php"><button type="button" class="btn btn-block btn-md btn-success">Add New Member Details</button></a>
+                                <hr>
                                 <h6 class="card-subtitle">Displaying all the registered member's account.</h6>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-hover table-bordered no-wrap">
@@ -156,6 +158,7 @@
                                         <td><?php echo $row->dayitwa;?></td>
                                         <td><?php echo $row->role;?></td>
                                         <td>
+                                        <a href="update_users.php?uid=<?php echo $row->id;?></td>" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
                                         <a href="view-members-acc.php?del=<?php echo $row->id;?>" title="Delete Record" onclick="return confirm("Do you want to delete");"><i class="icon-close" style="color:red;"></i></a></td>
                                         </tr>
                                             <?php
