@@ -4,10 +4,10 @@ include('../includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
 include('../includes/check-login.php');
 check_login();
-$aid = $_SESSION['id'];
+
 if (isset($_POST['update'])) {
 
-  
+    $aid = $_POST['vid'];
     $name = $_POST['name'];
     $sub_team = $_POST['sub_team'];
     $no_day = $_POST['no_day'];
