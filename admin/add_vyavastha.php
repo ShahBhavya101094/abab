@@ -10,7 +10,7 @@ if (isset($_POST['update'])) {
   
     $name = $_POST['name'];
     $sub_team = $_POST['sub_team'];
-    $no_day = $_POST['no_day'];
+    $no_days = $_POST['no_days'];
     $gender = $_POST['gender'];
     
     $status = $_POST['status'];
@@ -190,7 +190,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Number of Days</h4>
                                     <div class="form-group">
-                                    <input type="number" name="no_days" min="1"  max="25" id="no_days"  placeholder="Sub Team Name" class="form-control"
+                                    <input type="number" name="no_days" min="1"  max="25" id="no_days"  placeholder="Number of Days" class="form-control"
                                             required="required">
                                     </div>
 

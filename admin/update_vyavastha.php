@@ -144,10 +144,10 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Full Name</h4>
                                     <div class="form-group">
-                                        <input type="text" name="name" id="name" class="form-control"
+                                        <input type="text" name="name" id="name" class="form-control" value="<?php echo $row->name; ?>"
                                             required="required">
-                                            <input type="hidden" name="vid" id="vid" class="form-control"
-                                            value="<?php echo $row->name; ?>">
+                                            <input type="hidden" name="vid" id="vid" class="form-control" value="<?php echo $aid; ?>"
+                                            >
                                     </div>
 
                                 </div>
@@ -189,7 +189,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Sub Team Name</h4>
                                     <div class="form-group"> 
-                                    <input type="text" name="sub_team" id="sub_team"  placeholder="Sub Team Name" class="form-control" <?php echo $row->sub_team; ?>
+                                    <input type="text" name="sub_team" id="sub_team"  placeholder="Sub Team Name" class="form-control"  value="<?php echo $row->sub_team; ?>"
                                             required="required">
                                     </div>
 
@@ -203,7 +203,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Number of Days</h4>
                                     <div class="form-group">
-                                    <input type="number" name="no_days" min="1"  max="25" id="no_days"  placeholder="Sub Team Name" class="form-control" <?php echo $row->no_days; ?>
+                                    <input type="number" name="no_days" min="1"  max="25" id="no_days"  placeholder="Sub Team Name" class="form-control"  value="<?php echo $row->no_days; ?>"
                                             required="required">
                                     </div>
 
@@ -221,7 +221,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Date</h4>
                                     <div class="form-group">
-                                        <input type="date" min="2023-02-01" min="2023-02-01" name="arrival_date" <?php echo $row->date_arrival; ?>
+                                        <input type="date" min="2023-02-01" min="2023-02-01" name="arrival_date"  value="<?php echo $row->date_arrival; ?>"
                                             id="arrival_date" class="form-control" required="required">
                                     </div>
 
@@ -233,7 +233,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Date</h4>
                                     <div class="form-group">
-                                        <input type="date" min="2023-02-01" min="2023-02-01" name="departure_date" <?php echo $row->date_depature; ?>
+                                        <input type="date" min="2023-02-01" min="2023-02-01" name="departure_date"  value="<?php echo $row->date_depature; ?>"
                                             id="departure_date" class="form-control" required="required">
                                     </div>
 
