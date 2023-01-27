@@ -120,7 +120,7 @@ check_login();
         
             <tr>
                 <th  colspan="2" width="80%" >
-                    <h1 class="d-flex justify-content-center align-items-center">ABAB Adhikari Registration Details</h1>
+                    <h1 class="d-flex justify-content-center align-items-center">ABAB Guest Registration Details</h1>
                 </th>
                 <th class="tg-0lax"><img src="../includes/qrcodepic.php?data=GUEST:<?php echo $row->guest_contact; ?>"></img></th>
             </tr>

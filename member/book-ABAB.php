@@ -23,7 +23,7 @@ if (isset($_POST['submit'])) {
     $total_member_sis = $_POST['total_member_sis'];
     $total_member_bro = $_POST['total_member_bro'];
     $status = $_POST['reg_status'];
-    $adhar_number = $_POST['adhar_number'];
+    $adhar_number = '000000000000';
     if ($status == "1") {
         $query = "INSERT INTO `abab_booking` ( `uid`, `attend_event`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb13`, `feb14`, `total_member_sis`, `total_member_bro`, `status`,`adhar_number`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
         $stmt = $mysqli->prepare($query);
@@ -260,7 +260,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
 
-                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                <!-- <div class="col-sm-12 col-md-6 col-lg-4">
                                     <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Adhar Card :</h4>
@@ -271,8 +271,8 @@ if (isset($_POST['submit'])) {
 
                                         </div>
                                     </div>
-                                </div>
-                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                </div> -->
+                                <div class="col-sm-12 col-md-6 col-lg-6">
                                     <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Arrival Place</h4>
@@ -292,7 +292,7 @@ if (isset($_POST['submit'])) {
                                         </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="col-sm-12 col-md-6 col-lg-6">
                                     <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Departure Place</h4>
@@ -593,7 +593,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <!-- <div class="col-sm-12 col-md-6 col-lg-4">
                                     <div class="card required">
                                         <div class="card-body">
                                             <h4 class="card-title">Adhar Card :</h4>
@@ -604,8 +604,8 @@ if (isset($_POST['submit'])) {
 
                                         </div>
                                     </div>
-                                </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                </div> -->
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Arrival Place</h4>
@@ -622,7 +622,7 @@ if (isset($_POST['submit'])) {
                                     </div>
                                 </div>
                             </div>
-                            <div class="col-sm-12 col-md-6 col-lg-4">
+                            <div class="col-sm-12 col-md-6 col-lg-6">
                                 <div class="card required">
                                     <div class="card-body">
                                         <h4 class="card-title">Departure Place</h4>
