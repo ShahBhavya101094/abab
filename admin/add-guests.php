@@ -370,7 +370,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Arrival Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="06:00" max="22:00" name="arrival_time" id="arrival_time"
+                                        <input type="time"  name="arrival_time" id="arrival_time"
                                             class="form-control" required="required">
                                     </div>
 
@@ -430,7 +430,7 @@ if (isset($_POST['submit'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Departure Time</h4>
                                     <div class="form-group">
-                                        <input type="time" min="06:00" max="22:00" name="departure_time"
+                                        <input type="time"  name="departure_time"
                                             id="departure_time" class="form-control" required="required">
                                     </div>
 
