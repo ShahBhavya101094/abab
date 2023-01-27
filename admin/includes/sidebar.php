@@ -22,7 +22,9 @@
         <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="manage-vyavastha.php"
         aria-expanded="false"><i class="fas fa-user-circle"></i><span
         class="hide-menu">Manage Vyavastha</span></a></li>
-
+        <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="manage-guest.php"
+        aria-expanded="false"><i class="fas fa-bed"></i><span
+        class="hide-menu">Manage Guest</span></a></li>
 
         <!-- <li class="sidebar-item"> <a class="sidebar-link sidebar-link" href="bookings.php"
         aria-expanded="false"><i class="fas fa-h-square"></i><span
