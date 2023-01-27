@@ -21,7 +21,7 @@ if (isset($_POST['update'])) {
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
-    $query = "INSERT INTO `user_reg` ( `pranat`, `category`, `vibhag`, `letter`, `dayitwa`, `role`, `fullname`, `gender`, `address_info`, `mobile`, `email`, `dob`, `district`, `password`, `adhar_number`,`passUdateDate`, `reg_status`) VALUES ( ?, ' ', ?, ' ', ?, ' ', ?, ?, ?, ?, ?, ?, ?, '21232f297a57a5a743894a0e4a801fc3',?, ?, '0')";
+    $query = "INSERT INTO `user_reg` ( `pranat`, `category`, `vibhag`, `letter`, `dayitwa`, `role`, `fullname`, `gender`, `address_info`, `mobile`, `email`, `dob`, `district`, `password`, `adhar_number`,`passUdateDate`, `reg_status`) VALUES ( ?, ' ', ?, ' ', ?, ' ', ?, ?, ?, ?, ?, ?, ?, '789751b191513f5f4baf9da0b6c3d819',?, ?, '0')";
     $stmt = $mysqli->prepare($query);
     $rc = $stmt->bind_param('ssssssssssss', $pranat,$vibhag,$dayitwa ,$fullname, $gender, $address, $mobile,$email, $dob, $district, $adhar_number,$udate);
     $stmt->execute();

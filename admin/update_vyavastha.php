@@ -178,7 +178,7 @@ if (isset($_POST['update'])) {
                                 <div class="card-body">
                                     <h4 class="card-title">Mobile</h4>
                                     <div class="form-group">
-                                        <input type="text" name="mobile" id="mobile" maxlength="10" require <?php echo $row->mobile; ?>
+                                        <input type="text" name="mobile" id="mobile" maxlength="10" require value="<?php echo $row->mobile; ?>"
                                             class="form-control">
                                     </div>
                                 </div>
