@@ -154,11 +154,11 @@ check_login();
             </tr>
             <tr>
                 <th class="tg-0lax">Departure Details</th>
-                <td class="tg-0pky" colspan="2">  <?php echo $row->date_departure; ?> </td>
+                <td class="tg-0pky" colspan="2">  Date - <?php echo $row->date_departure; ?> </td>
             </tr>
             <tr>
                 <th class="tg-0lax">Status</th>
-                <td class="tg-0pky" colspan="2"> Date - <?php echo $row->status; ?> </td>
+                <td class="tg-0pky" colspan="2"> <?php echo $row->status; ?> </td>
             </tr>
         </tbody>
     </table>
