@@ -121,7 +121,7 @@ check_login();
                 <th  colspan="2" width="80%" >
                     <h1 class="d-flex justify-content-center align-items-center">ABAB Adhikari Registration Details</h1>
                 </th>
-                <th class="tg-0lax"><img src="../includes/qrcodepic.php?data=USER:<?php echo $row->mobile; ?>&<?php echo $row->email; ?>"></img></th>
+                <th class="tg-0lax"><img src="../includes/qrcodepic.php?data=USER:<?php echo $row->qr_code_id; ?>"></img></th>
             </tr>
     </table>
     <table class="table" width="100%">
