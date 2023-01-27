@@ -102,7 +102,7 @@ check_login();
     <div class="bg-primary"><input type="button" class="btn btn-danger center" onClick="window.print()" value="Print The Report" /></div>
 </div>
 <div class="d-flex justify-content-center align-items-center" style="height:100px;">
-    <div>Please keep Aadhar card with you during your visit to Somnath ABAB</div>
+    <div>Please keep AAadhaarcard with you during your visit to Somnath ABAB</div>
 </div>
 
 <body>

@@ -142,7 +142,7 @@ if (isset($_POST['submit'])) {
                     <button type="button" class="close" data-dismiss="alert" aria-label="Close">
                         <span aria-hidden="true">&times;</span>
                     </button>
-                    Please keep Aadhar card with you during your visit to Somnath ABAB
+                    Please keep AAadhaarcard with you during your visit to Somnath ABAB
                 </div>
                 <form method="POST">
 
@@ -216,12 +216,12 @@ if (isset($_POST['submit'])) {
                         <div class="col-sm-12 col-md-6 col-lg-4">
                             <div class="card required">
                                 <div class="card-body">
-                                    <h4 class="card-title">Adhar Card (12-Digit)</h4>
+                                    <h4 class="card-title">AadhaarCard (12-Digit)</h4>
                                     <div class="form-group mb-4">
                                         <input type="text" class="form-control" id="adhar_number"
-                                            title="Enter Valid 12 Digit Adhar Card Number" name="adhar_number"
+                                            title="Enter Valid 12 Digit AadhaarCard Number" name="adhar_number"
                                             pattern="[0-9]{12}" require maxlength="12"
-                                            placeholder="Enter Adhar Card..." />
+                                            placeholder="Enter AadhaarCard..." />
 
                                     </div>
 
