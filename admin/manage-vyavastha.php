@@ -111,6 +111,8 @@
                     <div class="col-12">
                         <div class="card">
                             <div class="card-body">
+                            <a href="add_users.php"><button type="button" class="btn btn-block btn-md btn-success">Add Vyavastha Member Details</button></a>
+                                
                             <hr>
                                 <div class="table-responsive">
                                     <table id="zero_config" class="table table-striped table-hover table-bordered no-wrap">
