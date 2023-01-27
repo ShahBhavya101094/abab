@@ -153,7 +153,7 @@
                                         <td><?php echo $row->date_depature;?></td>
                                         <td><?php echo $row->status;?></td>
                                         <td><a href="#" title="Edit"><i class="icon-note"></i></a>&nbsp;&nbsp;
-                                        <a href="manage-rooms.php?del=<?php echo $row->id;?>" title="Delete" onclick="return confirm("Do you want to delete");"><i class="icon-close" style="color:red;"></i></a></td>
+                                        <a href="manage-vyavastha.php?del=<?php echo $row->id;?>" title="Delete" onclick="return confirm("Do you want to delete");"><i class="icon-close" style="color:red;"></i></a></td>
                                         </tr>
                                             <?php
                                                 $cnt=$cnt+1;

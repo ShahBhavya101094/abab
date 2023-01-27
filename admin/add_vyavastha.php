@@ -8,14 +8,16 @@ $aid = $_SESSION['id'];
 if (isset($_POST['update'])) {
 
   
-    $fullname = $_POST['fullname'];
-    $subteam = $_POST['subteam'];
+    $fullname = $_POST['name'];
+    $sub_team = $_POST['sub_team'];
     $no_day = $_POST['no_day'];
     $gender = $_POST['gender'];
     
-    $email = $_POST['email'];
+    $status = $_POST['status'];
     $mobile = $_POST['mobile'];
-    $district = $_POST['district'];
+    
+    $date_arrival = $_POST['date_arrival'];
+    $date_depature = $_POST['date_depature'];
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
@@ -25,7 +27,7 @@ if (isset($_POST['update'])) {
     $rc = $stmt->bind_param('ssssssss', $name,$gender,$mobile ,$sub_team, $no_days, $date_arrival, $date_depature,$status);
     $stmt->execute();
     echo "<script>alert('ABAB Yyavastha adhikari add Succssfully');</script>";
-    echo "<script>location.href='view-members-acc.php';</script>";
+    echo "<script>location.href='manage-vyavastha.php';</script>";
 }
 ?>
 
