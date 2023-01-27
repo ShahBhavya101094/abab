@@ -177,18 +177,20 @@ check_login();
                                     <thead>
                                         <tr>
                                             <th scope="col">#</th>
-                                            <!-- <th scope="col">User ID</th> -->
+                                             <th scope="col">User ID</th> 
                                             <th scope="col">Member's Name</th>
-                                            <th scope="col">Pick Point</th>
+                                            <th scope="col">Mobile</th>
+                                            <th scope="col">Arrival Point</th>
                                             <th scope="col">Arrival Date/Time</th>
                                             <th scope="col">Departure Point</th>
+                                            <th scope="col">Arrival Date/Time</th>
                                             <th scope="col">Guest Count</th>
                                         </tr>
                                     </thead>
                                     <tbody>
                                         <?php
                                         $aid = $_SESSION['id'];
-                                        $ret = "SELECT * from abab_booking ORDER BY uid DESC";
+                                        $ret = "SELECT d.*,p.* from user_reg as d,abab_booking as p where d.id = p.uid ORDER BY p.id DESC";
                                         $stmt = $mysqli->prepare($ret);
                                         $stmt->execute();
                                         $res = $stmt->get_result();
@@ -197,12 +199,14 @@ check_login();
                                         ?>
                                             <tr>
                                                 <td><?php echo $cnt;; ?></td>
-                                                <!-- <td><?php echo $row->userId; ?></td> -->
                                                 <td><?php echo $row->uid; ?></td>
-                                                <td><?php echo $row->pick_point; ?></td>
-                                                <td><?php echo $row->From_Date; ?></td>
-                                                <td><?php echo $row->To_Date; ?></td>
-                                                <td><?php echo $row->total_member; ?></td>
+                                                <td><?php echo $row->fullname; ?></td>
+                                                <td><?php echo $row->mobile ; ?></td>
+                                                <td><?php echo $row->pick_point_place; ?></td>
+                                                <td><?php echo $row->arrival_date."-". $row->arrival_time."-".$row->arrival_mode_transport; ?></td>
+                                                <td><?php echo $row->drop_point_place; ?></td>
+                                                <td><?php echo $row->departure_date."-". $row->departure_time."-".$row->departure_mode_transport; ?></td>
+                                                <td><?php echo $row->total_member_sis+$row->total_member_bro; ?></td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;
