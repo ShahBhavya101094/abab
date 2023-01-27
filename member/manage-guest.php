@@ -123,8 +123,8 @@ if (isset($_GET['del'])) {
                                                 <th>१२/२ - प्रभाष क्षेत्र</th>
                                                 <th>१३/२ - सासण और गिरनार</th>
                                                 <th>१४/२ - द्वारिका</th>
-                                                <th>Actions</th>
                                                 <th>PRINT</th>
+                                                <th>Actions</th>
                                             </tr>
                                         </thead>
                                         <tbody>
