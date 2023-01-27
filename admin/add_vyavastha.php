@@ -8,7 +8,7 @@ $aid = $_SESSION['id'];
 if (isset($_POST['update'])) {
 
   
-    $fullname = $_POST['name'];
+    $name = $_POST['name'];
     $sub_team = $_POST['sub_team'];
     $no_day = $_POST['no_day'];
     $gender = $_POST['gender'];
@@ -16,15 +16,15 @@ if (isset($_POST['update'])) {
     $status = $_POST['status'];
     $mobile = $_POST['mobile'];
     
-    $date_arrival = $_POST['date_arrival'];
-    $date_depature = $_POST['date_depature'];
+    $arrival_date = $_POST['arrival_date'];
+    $departure_date = $_POST['departure_date'];
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
     $query = "INSERT INTO `abab_vyavastha` ( `name`, `gender`, `mobile`, `sub_team`, `no_days`, `date_arrival`, `date_depature`, `status`) 
     VALUES ( ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('ssssssss', $name,$gender,$mobile ,$sub_team, $no_days, $date_arrival, $date_depature,$status);
+    $rc = $stmt->bind_param('ssssssss', $name,$gender,$mobile ,$sub_team, $no_days, $arrival_date, $departure_date,$status);
     $stmt->execute();
     echo "<script>alert('ABAB Yyavastha adhikari add Succssfully');</script>";
     echo "<script>location.href='manage-vyavastha.php';</script>";
