@@ -106,11 +106,11 @@ check_login();
 </div>
 <body>
     <?php
-                    $aid = 0;
+                   
                     $gid = $_GET['gid'];
-                    $ret = "SELECT * FROM `abab_vyavastha` where id=? and uid=?";
+                    $ret = "SELECT * FROM `abab_vyavastha` where id=? ";
                     $stmt = $mysqli->prepare($ret);
-                    $stmt->bind_param('ii', $gid,$aid);
+                    $stmt->bind_param('i', $gid);
                     $stmt->execute(); //ok
                     $res = $stmt->get_result();
                     //$cnt=1;
