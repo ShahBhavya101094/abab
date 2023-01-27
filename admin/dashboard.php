@@ -198,7 +198,7 @@ check_login();
                                         while ($row = $res->fetch_object()) {
                                         ?>
                                             <tr>
-                                                <td><?php echo $cnt;; ?></td>
+                                                <td><?php echo $cnt; ?></td>
                                                 <td><?php echo $row->uid; ?></td>
                                                 <td><?php echo $row->fullname; ?></td>
                                                 <td><?php echo $row->mobile ; ?></td>
@@ -206,7 +206,7 @@ check_login();
                                                 <td><?php echo $row->arrival_date."-". $row->arrival_time."-".$row->arrival_mode_transport; ?></td>
                                                 <td><?php echo $row->drop_point_place; ?></td>
                                                 <td><?php echo $row->departure_date."-". $row->departure_time."-".$row->departure_mode_transport; ?></td>
-                                                <td><?php echo $row->total_member_sis+$row->total_member_bro; ?></td>
+                                                <td><?php echo $row->total_member_sis.$row->total_member_bro; ?></td>
                                             </tr>
                                         <?php
                                             $cnt = $cnt + 1;
