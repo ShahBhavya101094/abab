@@ -7,10 +7,10 @@ check_login();
 
 if (isset($_POST['update'])) {
 
-    $aid = $_POST['vid'];
+    $vid = $_POST['vid'];
     $name = $_POST['name'];
     $sub_team = $_POST['sub_team'];
-    $no_day = $_POST['no_day'];
+    $no_days = $_POST['no_days'];
     $gender = $_POST['gender'];
     
     $status = $_POST['status'];
@@ -23,10 +23,10 @@ if (isset($_POST['update'])) {
     $adhar_number = $_POST['adhar_number'];
     $query = "UPDATE `abab_vyavastha` SET `name` = ?, `gender` = ?, `mobile` = ?, `sub_team` = ?, `no_days` = ?, `date_arrival` = ?, `date_depature` = ?, `status` = ? WHERE id = ?";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('ssssssssi', $name,$gender,$mobile ,$sub_team, $no_days, $arrival_date, $departure_date,$status,$id);
+    $rc = $stmt->bind_param('ssssssssi', $name,$gender,$mobile ,$sub_team, $no_days, $arrival_date, $departure_date,$status,$vid);
     $stmt->execute();
-    echo "<script>alert('ABAB Yyavastha adhikari add Succssfully');</script>";
-    echo "<script>location.href='manage-vyavastha.php';</script>";
+   // echo "<script>alert('ABAB Yyavastha adhikari update Succssfully');</script>";
+    //echo "<script>location.href='manage-vyavastha.php';</script>";
 }
 ?>
 
@@ -263,7 +263,7 @@ if (isset($_POST['update'])) {
                     <?php } ?>
                     <div class="form-actions">
                         <div class="text-center">
-                            <button type="submit" name="update" class="btn btn-success">Add Vyavastha Adhikari</button>
+                            <button type="submit" name="update" class="btn btn-success">Update Vyavastha Adhikari</button>
                         </div>
                     </div>
 
