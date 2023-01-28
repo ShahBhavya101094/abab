@@ -22,10 +22,10 @@ if (isset($_POST['update'])) {
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
-    $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=?,adhar_number=?,dayitwa=,vibhag=?,pranat=?,mobile=? where id=?";
-    $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('ssssssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number,$dayitwa,$vibhag,$pranat,$mobile, $aid);
-    $stmt->execute();
+    // $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=?,adhar_number=?,dayitwa=,vibhag=?,pranat=?,mobile=? where id=?";
+    // $stmt = $mysqli->prepare($query);
+    // $rc = $stmt->bind_param('ssssssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number,$dayitwa,$vibhag,$pranat,$mobile, $aid);
+    // $stmt->execute();
     echo "<script>alert('Adhikari profile updated Succssfully');</script>";
     echo "<script>location.href='view-members-acc.php';</script>";
 }
