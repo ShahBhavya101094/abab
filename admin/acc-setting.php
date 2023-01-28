@@ -6,6 +6,7 @@
 
     if(isset($_POST['changepwd'])){
     $op=md5($_POST['oldpassword']);
+    echo $op;
     $np=md5($_POST['newpassword']);
     $ai=$_SESSION['id'];
     $udate=date('Y-m-d');
@@ -13,9 +14,11 @@
         $chngpwd = $mysqli->prepare($sql);
         $chngpwd->bind_param('s',$op);
         $chngpwd->execute();
-        $chngpwd->store_result(); 
-        $row_cnt=$chngpwd->num_rows;
-        if($row_cnt>0)
+        
+        $chngpwd -> bind_result($result);
+        $chngpwd -> fetch();
+        $opass=$result;
+        if($opass==$pass) 
         {
             $con="update admin set password=?,updation_date=?  where id=?";
     $chngpwd1 = $mysqli->prepare($con);
@@ -47,8 +50,8 @@
     <!-- Custom CSS -->
     <link href="../assets/extra-libs/c3/c3.min.css" rel="stylesheet">
     <link href="../assets/libs/chartist/dist/chartist.min.css" rel="stylesheet">
-     <!-- This page plugin CSS -->
-     <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
+    <!-- This page plugin CSS -->
+    <link href="../assets/extra-libs/datatables.net-bs4/css/dataTables.bootstrap4.css" rel="stylesheet">
     <!-- Custom CSS -->
     <link href="../dist/css/style.min.css" rel="stylesheet">
 
@@ -101,25 +104,26 @@
             <div class="page-breadcrumb">
                 <div class="row">
                     <div class="col-7 align-self-center">
-                    <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Change Password</h4>
-                        
-                        
+                        <h4 class="page-title text-truncate text-dark font-weight-medium mb-1">Change Password</h4>
+
+
                         <?php if(isset($_POST['changepwd']))
                             { ?>
-                                <div class="alert alert-secondary alert-dismissible bg-secondary text-white border-0 fade show"
-                                    role="alert">
-                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                        <span aria-hidden="true">&times;</span>
-                                    </button>
-                                    <strong>Info - </strong> <?php echo htmlentities($_SESSION['msg']); ?> <?php echo htmlentities($_SESSION['msg']=""); ?>
-                                </div>
-						<?php } ?>
+                        <div class="alert alert-secondary alert-dismissible bg-secondary text-white border-0 fade show"
+                            role="alert">
+                            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                            <strong>Info - </strong> <?php echo htmlentities($_SESSION['msg']); ?>
+                            <?php echo htmlentities($_SESSION['msg']=""); ?>
+                        </div>
+                        <?php } ?>
 
-                            
-                        
-                        
+
+
+
                     </div>
-                    
+
                 </div>
 
             </div>
@@ -140,11 +144,12 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Current Password</h4>
-                                        <div class="form-group">
-                                        <input type="password" value="" name="oldpassword" id="oldpassword" class="form-control" onBlur="checkpass()" required="required">
+                                    <div class="form-group">
+                                        <input type="password" value="" name="oldpassword" id="oldpassword"
+                                            class="form-control" onBlur="checkpass()" required="required">
                                         <span id="password-availability-status" style="font-size:12px;"></span>
-                                        </div>
-                                    
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -155,10 +160,11 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">New Password</h4>
-                                        <div class="form-group">
-                                        <input type="password" class="form-control" name="newpassword" id="newpassword" value="" required="required">
-                                        </div>
-                                    
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" name="newpassword" id="newpassword"
+                                            value="" required="required">
+                                    </div>
+
                                 </div>
                             </div>
                         </div>
@@ -168,9 +174,10 @@
                             <div class="card">
                                 <div class="card-body">
                                     <h4 class="card-title">Confirm Password</h4>
-                                        <div class="form-group">
-                                        <input type="password" class="form-control" value="" required="required" id="cpassword" name="cpassword" >
-                                        </div>
+                                    <div class="form-group">
+                                        <input type="password" class="form-control" value="" required="required"
+                                            id="cpassword" name="cpassword">
+                                    </div>
                                 </div>
                             </div>
                         </div>
@@ -187,23 +194,24 @@
                         {
                             ?>
 
-                        <h6 class="card-subtitle"><code>Last Updated On: </code> <?php echo $row->updation_date; }?> </h6>
+                        <h6 class="card-subtitle"><code>Last Updated On: </code> <?php echo $row->updation_date; }?>
+                        </h6>
 
 
 
                     </div>
 
 
-                        <div class="form-actions">
-                            <div class="text-center">
-                                <button type="submit" name="changepwd" class="btn btn-success">Make Changes</button>
-                                <button type="reset" class="btn btn-danger">Reset</button>
-                            </div>
+                    <div class="form-actions">
+                        <div class="text-center">
+                            <button type="submit" name="changepwd" class="btn btn-success">Make Changes</button>
+                            <button type="reset" class="btn btn-danger">Reset</button>
                         </div>
+                    </div>
 
-                 
-                 </form>
-                 
+
+                </form>
+
             </div>
             <!-- ============================================================== -->
             <!-- End Container fluid  -->
@@ -252,13 +260,13 @@
         $("#loaderIcon").show();
         jQuery.ajax({
             url: "check-availability-admin.php",
-            data:'emailid='+$("#emailid").val(),
+            data: 'emailid=' + $("#emailid").val(),
             type: "POST",
-        success:function(data){
-            $("#user-availability-status").html(data);
-            $("#loaderIcon").hide();
-        },
-        error:function (){}
+            success: function(data) {
+                $("#user-availability-status").html(data);
+                $("#loaderIcon").hide();
+            },
+            error: function() {}
         });
     }
     </script>
@@ -268,13 +276,13 @@
         $("#loaderIcon").show();
         jQuery.ajax({
             url: "check-availability-admin.php",
-            data:'oldpassword='+$("#oldpassword").val(),
+            data: 'oldpassword=' + $("#oldpassword").val(),
             type: "POST",
-        success:function(data){
-            $("#password-availability-status").html(data);
-            $("#loaderIcon").hide();
-        },
-        error:function (){}
+            success: function(data) {
+                $("#password-availability-status").html(data);
+                $("#loaderIcon").hide();
+            },
+            error: function() {}
         });
     }
     </script>
