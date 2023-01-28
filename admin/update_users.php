@@ -20,12 +20,9 @@ if (isset($_POST['update'])) {
     $district = $_POST['district'];
     $udate = date('d-m-Y h:i:s', time());
     $adhar_number = $_POST['adhar_number'];
-     $query = "UPDATE `user_reg` SET `pranat`=?,`vibhag`=?,`dayitwa`=?,`fullname`=?,`gender`=?,
-     `address_info`='passUdateDate',`mobile`=?,`email`=?, 
-     `dob`=?,district ?,`passUdateDate`=?,`reg_status`=?,adhar_number=?  WHERE id = ?";
+     $query = "UPDATE `user_reg` SET `pranat`=?,`vibhag`=?,`dayitwa`=?,`fullname`=?,`gender`=?,`address_info`='?',`mobile`=?,`email`=?,  `dob`=?,district= ?,  `passUdateDate`=?,`reg_status`=?,adhar_number=?  WHERE id = ?";
      $stmt = $mysqli->prepare($query);
-     $rc = $stmt->bind_param('ssssssssssss', $pranat, $vibhag, $dayitwa, $fullname, $gender, $address_info,
-      $mobile,$email,$$udate,$dob,$district, $dayitwa,$aid );
+     $rc = $stmt->bind_param('ssssssssssss', $pranat, $vibhag, $dayitwa, $fullname, $gender, $address, $mobile,$email,$udate,$dob,$district, $passUdateDate,$reg_status,$adhar_number,$aid );
      $stmt->execute();
     echo "<script>alert('Adhikari profile updated Succssfully');</script>";
     echo "<script>location.href='view-members-acc.php';</script>";
