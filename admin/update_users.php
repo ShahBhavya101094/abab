@@ -20,9 +20,10 @@ if (isset($_POST['update'])) {
     $district = $_POST['district'];
     $udate = date('d-m-Y h:i:s', time());
     $adhar_number = $_POST['adhar_number'];
+    $reg_status = 0;
      $query = "UPDATE `user_reg` SET `pranat`=?,`vibhag`=?,`dayitwa`=?,`fullname`=?,`gender`=?,`address_info`='?',`mobile`=?,`email`=?,  `dob`=?,district= ?,  `passUdateDate`=?,`reg_status`=?,adhar_number=?  WHERE id = ?";
      $stmt = $mysqli->prepare($query);
-     $rc = $stmt->bind_param('ssssssssssss', $pranat, $vibhag, $dayitwa, $fullname, $gender, $address, $mobile,$email,$udate,$dob,$district, $passUdateDate,$reg_status,$adhar_number,$aid );
+     $rc = $stmt->bind_param('ssssssssssssss', $pranat, $vibhag, $dayitwa, $fullname, $gender, $address, $mobile,$email,$dob,$district, $udate,$reg_status,$adhar_number,$aid );
      $stmt->execute();
     echo "<script>alert('Adhikari profile updated Succssfully');</script>";
     echo "<script>location.href='view-members-acc.php';</script>";
@@ -241,7 +242,7 @@ while ($row1 = $res1->fetch_object()) {
                                         <div class="form-group">
                                             <input type="text" name="fullname" id="fullname" class="form-control"
                                                 value="<?php echo $row->fullname; ?>" required="required">
-                                            <input type="hidden" name="uid" id="uid" value="<?php echo $row->$aid; ?>">
+                                            <input type="hidden" name="uid" id="uid" value="<?php echo $aid; ?>">
                                         </div>
 
                                     </div>
