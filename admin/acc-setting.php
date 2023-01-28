@@ -14,7 +14,7 @@
         $chngpwd->bind_param('s',$op);
         $chngpwd->execute();
         $chngpwd->store_result(); 
-        $row_cnt=$chngpwd->num_rows;;
+        $row_cnt=$chngpwd->num_rows;
         if($row_cnt>0)
         {
             $con="update admin set password=?,updation_date=?  where id=?";
