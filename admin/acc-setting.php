@@ -5,8 +5,8 @@
     check_login();
 
     if(isset($_POST['changepwd'])){
-    $op=$_POST['oldpassword'];
-    $np=$_POST['newpassword'];
+    $op=md5($_POST['oldpassword']);
+    $np=md5($_POST['newpassword']);
     $ai=$_SESSION['id'];
     $udate=date('Y-m-d');
         $sql="SELECT password FROM admin where password=?";
