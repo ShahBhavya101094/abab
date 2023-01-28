@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('includes/dbconn.php');
+include('../includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
-include('includes/check-login.php');
+include('../includes/check-login.php');
 check_login();
 if (isset($_POST['update'])) {
     
