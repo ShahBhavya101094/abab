@@ -33,7 +33,7 @@ if (isset($_POST['submit'])) {
     $adhar_number = $_POST['adhar_number'];
     $query = "INSERT INTO `abab_guest_booking` ( `uid`, `guest_name`, `guest_relation`, `guest_contact`, `guest_address`, `pick_point_place`, `drop_point_place`, `food_status`, `arrival_date`, `arrival_time`, `arrival_mode_transport`, `arrival_mode_details`, `departure_date`, `departure_time`, `departure_mode_transport`, `departure_mode_details`, `feb10`, `feb11`, `feb12`, `feb13`, `feb14`, `status`,`adhar_number`,`guest_gender`) VALUES ( ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)";
     $stmt = $mysqli->prepare($query);
-    $rc = $stmt->bind_param('issssssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status, $adhar_number, $guest_gender);
+    $rc = $stmt->bind_param('isssssssssssssssssssssss', $uid, $guest_name, $guest_relation, $guest_contact, $guest_address, $pick_point_place, $drop_point_place, $food_status, $arrival_date, $arrival_time, $arrival_mode_transport, $arrival_mode_details, $departure_date, $departure_time, $departure_mode_transport, $departure_mode_details, $feb10, $feb11, $feb12, $feb13, $feb14, $status, $adhar_number, $guest_gender);
     $stmt->execute();
     echo "<script>alert('Guest details has been added');</script>";
     echo "<script>location.href='manage-guest.php';</script>";
