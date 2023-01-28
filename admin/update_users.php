@@ -22,10 +22,10 @@ if (isset($_POST['update'])) {
     $udate = date('d-m-Y h:i:s', time());
 
     $adhar_number = $_POST['adhar_number'];
-    // $query = "UPDATE  user_reg set fullname=?,gender=?,address_info=?,email=?,dob=?,district=?,adhar_number=?,dayitwa=,vibhag=?,pranat=?,mobile=? where id=?";
-    // $stmt = $mysqli->prepare($query);
-    // $rc = $stmt->bind_param('ssssssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number,$dayitwa,$vibhag,$pranat,$mobile, $aid);
-    // $stmt->execute();
+     $query = "UPDATE  user_reg set `fullname` = ? ,`gender` = ? , `address_info` = ? , `email` = ? ,`dob` = ? ,`district` = ? ,`adhar_number` = ? ,`dayitwa` = ?,`vibhag` = ? ,`pranat` = ? ,`mobile` = ?  where `id` = ?  ";
+     $stmt = $mysqli->prepare($query);
+     $rc = $stmt->bind_param('ssssssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number,$dayitwa,$vibhag,$pranat,$mobile, $aid);
+     $stmt->execute();
     echo "<script>alert('Adhikari profile updated Succssfully');</script>";
     echo "<script>location.href='view-members-acc.php';</script>";
 }
@@ -125,7 +125,7 @@ if (isset($_POST['update'])) {
 
                     <?php
                     $aid = $_GET['uid'];
-                    $ret = "select * from user_reg where id=?";
+                    $ret = "select * from user_reg where id = ? ";
                     $stmt = $mysqli->prepare($ret);
                     $stmt->bind_param('i', $aid);
                     $stmt->execute(); //ok
@@ -243,8 +243,7 @@ while ($row1 = $res1->fetch_object()) {
                                         <div class="form-group">
                                             <input type="text" name="fullname" id="fullname" class="form-control"
                                                 value="<?php echo $row->fullname; ?>" required="required">
-                                                <input type="hidden" name="uid" id="uid" 
-                                                value="<?php echo $row->$aid; ?>" >
+                                            <input type="hidden" name="uid" id="uid" value="<?php echo $row->$aid; ?>">
                                         </div>
 
                                     </div>
