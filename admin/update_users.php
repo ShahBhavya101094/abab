@@ -4,8 +4,9 @@ include('../includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
 include('../includes/check-login.php');
 check_login();
-$aid = $_GET['uid'];
 if (isset($_POST['update'])) {
+    
+    $aid = $_POST['uid'];
     $pranat = $_POST['pranat'];
     $vibhag = $_POST['vibhag'];
     $dayitwa = $_POST['dayitwa'];
@@ -133,23 +134,23 @@ if (isset($_POST['update'])) {
                     while ($row = $res->fetch_object()) {
                     ?>
 
-                   
-
-
-                <form name="registration" method="POST">
-
-                    <div class="row">
 
 
 
-                        <div class="col-md-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Prant Name</h4>
-                                    <div class="form-group">
-                                        <select class="custom-select mr-sm-2" required name="pranat"
-                                            placeholder="Select Prant Name">
-                                            <?php
+                    <form name="registration" method="POST">
+
+                        <div class="row">
+
+
+
+                            <div class="col-md-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Prant Name</h4>
+                                        <div class="form-group">
+                                            <select class="custom-select mr-sm-2" required name="pranat"
+                                                placeholder="Select Prant Name">
+                                                <?php
 
 $ret1 = "SELECT DISTINCT`pranat` FROM `user_reg`";
 $stmt1 = $mysqli->prepare($ret1);
@@ -158,27 +159,29 @@ $res1 = $stmt1->get_result();
 //$cnt=1;
 while ($row1 = $res1->fetch_object()) {
 ?>
-                                            <option  value="<?php echo $row1->pranat; ?>" <?php echo $row1->pranat == $row->pranat?"selected":""; ?>><?php echo $row1->pranat; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
+                                                <option value="<?php echo $row1->pranat; ?>"
+                                                    <?php echo $row1->pranat == $row->pranat?"selected":""; ?>>
+                                                    <?php echo $row1->pranat; ?>
+                                                </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <!-- By Vkendra - Vkendra.com -->
-
+                            <!-- By Vkendra - Vkendra.com -->
 
 
-                        <div class="col-md-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Vibhag Name</h4>
-                                    <div class="form-group">
-                                        <select class="custom-select mr-sm-2" name="vibhag">
-                                        <?php
+
+                            <div class="col-md-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Vibhag Name</h4>
+                                        <div class="form-group">
+                                            <select class="custom-select mr-sm-2" name="vibhag">
+                                                <?php
 
 $ret1 = "SELECT DISTINCT`vibhag` FROM `user_reg`";
 $stmt1 = $mysqli->prepare($ret1);
@@ -187,24 +190,26 @@ $res1 = $stmt1->get_result();
 //$cnt=1;
 while ($row1 = $res1->fetch_object()) {
 ?>
-                                            <option  value="<?php echo $row1->vibhag; ?>" <?php echo $row1->vibhag == $row->vibhag?"selected":""; ?>><?php echo $row1->vibhag; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
-                                    </div>
+                                                <option value="<?php echo $row1->vibhag; ?>"
+                                                    <?php echo $row1->vibhag == $row->vibhag?"selected":""; ?>>
+                                                    <?php echo $row1->vibhag; ?>
+                                                </option>
+                                                <?php } ?>
+                                            </select>
+                                        </div>
 
+                                    </div>
                                 </div>
                             </div>
-                        </div>
 
 
-                        <div class="col-md-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Dayitwa Name</h4>
-                                    <div class="form-group">
-                                        <select class="custom-select mr-sm-2" name="dayitwa">
-                                        <?php
+                            <div class="col-md-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Dayitwa Name</h4>
+                                        <div class="form-group">
+                                            <select class="custom-select mr-sm-2" name="dayitwa">
+                                                <?php
 
 $ret1 = "SELECT DISTINCT`dayitwa` FROM `user_reg`";
 $stmt1 = $mysqli->prepare($ret1);
@@ -213,197 +218,202 @@ $res1 = $stmt1->get_result();
 //$cnt=1;
 while ($row1 = $res1->fetch_object()) {
 ?>
-                                            <option  value="<?php echo $row1->dayitwa; ?>" <?php echo $row1->dayitwa == $row->dayitwa?"selected":""; ?>><?php echo $row1->dayitwa; ?>
-                                            </option>
-                                            <?php } ?>
-                                        </select>
+                                                <option value="<?php echo $row1->dayitwa; ?>"
+                                                    <?php echo $row1->dayitwa == $row->dayitwa?"selected":""; ?>>
+                                                    <?php echo $row1->dayitwa; ?>
+                                                </option>
+                                                <?php } ?>
+                                            </select>
 
-                                    </div>
+                                        </div>
 
-                                </div>
-                            </div>
-                        </div>
-
-
-
-                    </div>
-                    <div class="row">
-
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Full Name</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="fullname" id="fullname" class="form-control"
-                                            value="<?php echo $row->fullname; ?>" required="required">
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="col-sm-12 col-md-6 col-lg-6">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Address Details</h4>
-                                    <div class="form-group">
-                                        <textarea name="address" id="address"
-                                            class="form-control"><?php echo $row->address_info; ?></textarea>
-                                    </div>
-
-                                </div>
-                            </div>
-                        </div>
-
-
-
-
-
-
-
-                        <!-- By Vkendra - Vkendra.com -->
-
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Mobile</h4>
-                                    <div class="form-group">
-                                        <input type="text" name="mobile" id="mobile" maxlength="10" class="form-control"
-                                            value="<?php echo $row->mobile; ?>">
                                     </div>
                                 </div>
                             </div>
+
+
+
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Email Address</h4>
-                                    <div class="form-group">
-                                        <input type="email" name="email" id="email" class="form-control"
-                                            value="<?php echo $row->email; ?>" required="required">
+                        <div class="row">
+
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Full Name</h4>
+                                        <div class="form-group">
+                                            <input type="text" name="fullname" id="fullname" class="form-control"
+                                                value="<?php echo $row->fullname; ?>" required="required">
+                                                <input type="hidden" name="uid" id="uid" 
+                                                value="<?php echo $row->$aid; ?>" >
+                                        </div>
+
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">AadhaarCard :</h4>
-                                    <div class="form-group mb-4">
-                                        <input type="text" class="form-control" id="adhar_number"
-                                            title="Enter Valid 12 Digit AadhaarCard Number"
-                                            value="<?php echo $row->adhar_number; ?>" name="adhar_number"
-                                            pattern="[0-9]{12}" require minlength="12" maxlength="12"
-                                            placeholder="Enter AadhaarCard..." />
 
-                                    </div>
+                            <div class="col-sm-12 col-md-6 col-lg-6">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Address Details</h4>
+                                        <div class="form-group">
+                                            <textarea name="address" id="address"
+                                                class="form-control"><?php echo $row->address_info; ?></textarea>
+                                        </div>
 
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Gender</h4>
-                                    <div class="form-group mb-4">
-                                        <select class="custom-select mr-sm-2" id="gender" name="gender">
-                                            <option value="<?php echo $row->gender; ?>"><?php echo $row->gender; ?>
-                                            </option>
-                                            <option value="Brother">Brother</option>
-                                            <option value="Sister">Sister</option>
-                                        </select>
                                     </div>
                                 </div>
                             </div>
-                        </div>
 
-                        <div class="col-sm-12 col-md-6 col-lg-4">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">Date of Birth</h4>
-                                    <div class="form-group">
-                                        <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control"
-                                            value="<?php echo $row->dob; ?>" required="required">
+
+
+
+
+
+
+                            <!-- By Vkendra - Vkendra.com -->
+
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Mobile</h4>
+                                        <div class="form-group">
+                                            <input type="text" name="mobile" id="mobile" maxlength="10"
+                                                class="form-control" value="<?php echo $row->mobile; ?>">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="col-sm-12 col-md-6 col-lg-4 d-none">
-                            <div class="card required">
-                                <div class="card-body">
-                                    <h4 class="card-title">District</h4>
-                                    <div class="form-group mb-4">
-                                        <select class="custom-select mr-sm-2" id="district" name="district">
-                                            <?php if ($row->district != "") { ?>
-                                            <option value="<?php echo $row->district; ?>"><?php echo $row->district; ?>
-                                            </option>
-                                            <?php } ?>
-                                            <option value="Other">Other</option>
-
-                                        </select>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Email Address</h4>
+                                        <div class="form-group">
+                                            <input type="email" name="email" id="email" class="form-control"
+                                                value="<?php echo $row->email; ?>" required="required">
+                                        </div>
                                     </div>
                                 </div>
                             </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">AadhaarCard :</h4>
+                                        <div class="form-group mb-4">
+                                            <input type="text" class="form-control" id="adhar_number"
+                                                title="Enter Valid 12 Digit AadhaarCard Number"
+                                                value="<?php echo $row->adhar_number; ?>" name="adhar_number"
+                                                pattern="[0-9]{12}" require minlength="12" maxlength="12"
+                                                placeholder="Enter AadhaarCard..." />
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Gender</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="gender" name="gender">
+                                                <option value="<?php echo $row->gender; ?>"><?php echo $row->gender; ?>
+                                                </option>
+                                                <option value="Brother">Brother</option>
+                                                <option value="Sister">Sister</option>
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-4">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">Date of Birth</h4>
+                                        <div class="form-group">
+                                            <input type="date" name="dob" id="dob" max="2008-01-01" class="form-control"
+                                                value="<?php echo $row->dob; ?>" required="required">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-12 col-md-6 col-lg-4 d-none">
+                                <div class="card required">
+                                    <div class="card-body">
+                                        <h4 class="card-title">District</h4>
+                                        <div class="form-group mb-4">
+                                            <select class="custom-select mr-sm-2" id="district" name="district">
+                                                <?php if ($row->district != "") { ?>
+                                                <option value="<?php echo $row->district; ?>">
+                                                    <?php echo $row->district; ?>
+                                                </option>
+                                                <?php } ?>
+                                                <option value="Other">Other</option>
+
+                                            </select>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <?php } ?>
+
                         </div>
 
-                        <?php } ?>
-
-                    </div>
-
-                    <div class="form-actions">
-                        <div class="text-center">
-                            <button type="submit" name="update" class="btn btn-success">Make Changes</button>
+                        <div class="form-actions">
+                            <div class="text-center">
+                                <button type="submit" name="update" class="btn btn-success">Make Changes</button>
+                            </div>
                         </div>
-                    </div>
 
-                </form>
-
+                    </form>
 
 
+
+                </div>
+                <!-- ============================================================== -->
+                <!-- End Container fluid  -->
+                <!-- ============================================================== -->
+                <!-- ============================================================== -->
+                <!-- footer -->
+                <!-- ============================================================== -->
+                <?php include '../includes/footer.php' ?>
+                <!-- ============================================================== -->
+                <!-- End footer -->
+                <!-- ============================================================== -->
             </div>
             <!-- ============================================================== -->
-            <!-- End Container fluid  -->
-            <!-- ============================================================== -->
-            <!-- ============================================================== -->
-            <!-- footer -->
-            <!-- ============================================================== -->
-            <?php include '../includes/footer.php' ?>
-            <!-- ============================================================== -->
-            <!-- End footer -->
+            <!-- End Page wrapper  -->
             <!-- ============================================================== -->
         </div>
         <!-- ============================================================== -->
-        <!-- End Page wrapper  -->
+        <!-- End Wrapper -->
         <!-- ============================================================== -->
-    </div>
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- End Wrapper -->
-    <!-- ============================================================== -->
-    <!-- All Jquery -->
-    <!-- ============================================================== -->
-    <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
-    <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
-    <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- apps -->
-    <!-- By Vkendra - Vkendra.com -->
-    <!-- apps -->
-    <script src="../dist/js/app-style-switcher.js"></script>
-    <script src="../dist/js/feather.min.js"></script>
-    <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
-    <script src="../dist/js/sidebarmenu.js"></script>
-    <!--Custom JavaScript -->
-    <script src="../dist/js/custom.min.js"></script>
-    <!--This page JavaScript -->
-    <script src="../assets/extra-libs/c3/d3.min.js"></script>
-    <script src="../assets/extra-libs/c3/c3.min.js"></script>
-    <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
-    <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
-    <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
+        <!-- End Wrapper -->
+        <!-- ============================================================== -->
+        <!-- All Jquery -->
+        <!-- ============================================================== -->
+        <script src="../assets/libs/jquery/dist/jquery.min.js"></script>
+        <script src="../assets/libs/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../assets/libs/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- apps -->
+        <!-- By Vkendra - Vkendra.com -->
+        <!-- apps -->
+        <script src="../dist/js/app-style-switcher.js"></script>
+        <script src="../dist/js/feather.min.js"></script>
+        <script src="../assets/libs/perfect-scrollbar/dist/perfect-scrollbar.jquery.min.js"></script>
+        <script src="../dist/js/sidebarmenu.js"></script>
+        <!--Custom JavaScript -->
+        <script src="../dist/js/custom.min.js"></script>
+        <!--This page JavaScript -->
+        <script src="../assets/extra-libs/c3/d3.min.js"></script>
+        <script src="../assets/extra-libs/c3/c3.min.js"></script>
+        <script src="../assets/libs/chartist/dist/chartist.min.js"></script>
+        <script src="../assets/libs/chartist-plugin-tooltips/dist/chartist-plugin-tooltip.min.js"></script>
+        <script src="../dist/js/pages/dashboards/dashboard1.min.js"></script>
 </body>
 
 </html>
