@@ -1,8 +1,8 @@
 <?php
 session_start();
-include('../includes/dbconn.php');
+include('includes/dbconn.php');
 date_default_timezone_set('America/Chicago');
-include('../includes/check-login.php');
+include('includes/check-login.php');
 check_login();
 if (isset($_POST['update'])) {
     
@@ -18,13 +18,14 @@ if (isset($_POST['update'])) {
     
     $mobile = $_POST['mobile'];
     $district = $_POST['district'];
-
     $udate = date('d-m-Y h:i:s', time());
-
     $adhar_number = $_POST['adhar_number'];
-     $query = "UPDATE  user_reg set `fullname` = ? ,`gender` = ? , `address_info` = ? , `email` = ? ,`dob` = ? ,`district` = ? ,`adhar_number` = ? ,`dayitwa` = ?,`vibhag` = ? ,`pranat` = ? ,`mobile` = ?  where `id` = ?  ";
+     $query = "UPDATE `user_reg` SET `pranat`=?,`vibhag`=?,`dayitwa`=?,`fullname`=?,`gender`=?,
+     `address_info`='passUdateDate',`mobile`=?,`email`=?, 
+     `dob`=?,district ?,`passUdateDate`=?,`reg_status`=?,adhar_number=?  WHERE id = ?";
      $stmt = $mysqli->prepare($query);
-     $rc = $stmt->bind_param('ssssssssssss', $fullname, $gender, $address, $email, $dob, $district, $adhar_number,$dayitwa,$vibhag,$pranat,$mobile, $aid);
+     $rc = $stmt->bind_param('ssssssssssss', $pranat, $vibhag, $dayitwa, $fullname, $gender, $address_info,
+      $mobile,$email,$$udate,$dob,$district, $dayitwa,$aid );
      $stmt->execute();
     echo "<script>alert('Adhikari profile updated Succssfully');</script>";
     echo "<script>location.href='view-members-acc.php';</script>";
